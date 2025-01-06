@@ -4,6 +4,8 @@
 #include <sstream>
 #include <vector>
 
+#include "LineData.h"
+
 using namespace std;
 
 int main()
@@ -17,22 +19,21 @@ int main()
         return 1;
     }
 
+    vector<LineData> data;
+
     string line;
+    // Skip the first line
+    getline(file, line);
+
     while (getline(file, line))
     {
-        stringstream ss(line);
-        string value;
-        vector<string> values;
-        while (getline(ss, value, ','))
-        {
-            values.push_back(value);
-        }
+        LineData ld(line);
+        data.push_back(ld);
+    }
 
-        for (const auto& val : values)
-        {
-            cout << val << " ";
-        }
-        cout << endl;
+    for (int i = 0; i < data.size(); i++)
+    {
+        data[i].print();
     }
 
     file.close();
