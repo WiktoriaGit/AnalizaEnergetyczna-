@@ -14,4 +14,8 @@ private:
     std::ofstream logFile;
 };
 
+// Declare global logger instances
+extern Logger logger;
+extern Logger loggerError;
+
 #endif // LOGGER_H

@@ -1,5 +1,10 @@
 #include "LineData.h"
+#include "Logger.h"
 #include <algorithm>
+#include <iostream>
+#include <sstream>
+
+using namespace std;
 
 LineData::LineData(const string& line) {
 

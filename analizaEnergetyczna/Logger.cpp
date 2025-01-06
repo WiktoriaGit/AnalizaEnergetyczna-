@@ -2,8 +2,11 @@
 #include <iomanip>
 #include <ctime>
 #include <cstdio>
-
 #include <sstream>
+
+// Define global logger instances
+Logger logger("log");
+Logger loggerError("log_error");
 
 Logger::Logger(const std::string& filename) {
     auto t = std::time(nullptr);
@@ -27,7 +30,6 @@ Logger::~Logger() {
         logFile.close();
     }
 }
-
 
 void Logger::log(const std::string& message) {
     if (logFile.is_open()) {
