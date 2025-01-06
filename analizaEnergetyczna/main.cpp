@@ -73,7 +73,7 @@ int main()
     file.close();
 
 
-    //treeData.print();
+    treeData.print();
 
     // Get data between dates
     string startDate = "15.10.2021 11:00";
@@ -82,7 +82,7 @@ int main()
 
     cout << "Data between " << startDate << " and " << endDate << ":" << endl;
     for (const auto& ld : filteredData) {
-        ld.print();
+        //ld.print();
     }
 
 

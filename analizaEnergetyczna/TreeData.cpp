@@ -36,18 +36,18 @@ void TreeData::print() const {
 
         for (const auto& monthPair : yearNode.months) {
             const MonthNode& monthNode = monthPair.second;
-            cout << "  Month: " << monthNode.month << endl;
+            cout << "\tMonth: " << monthNode.month << endl;
 
             for (const auto& dayPair : monthNode.days) {
                 const DayNode& dayNode = dayPair.second;
-                cout << "    Day: " << dayNode.day << endl;
+                cout << "\t\tDay: " << dayNode.day << endl;
 
                 for (const auto& hourPair : dayNode.hours) {
                     const HourNode& hourNode = hourPair.second;
-                    cout << "      Hour: " << hourNode.hour << endl;
+                    cout << "\t\t\tHour: " << hourNode.hour << endl;
 
                     for (const auto& lineData : hourNode.data) {
-                        lineData.print();
+                        lineData.printData();
                     }
                 }
             }

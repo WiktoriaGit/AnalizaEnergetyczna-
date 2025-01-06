@@ -17,6 +17,8 @@ public:
 	LineData(ifstream& in);
 
     void print() const;
+
+	void printData() const;
 	
 	string printString();
 

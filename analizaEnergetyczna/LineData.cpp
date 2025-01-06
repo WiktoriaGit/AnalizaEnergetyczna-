@@ -36,12 +36,19 @@ LineData::LineData(ifstream& in) {
     deserialize(in);
 }
 
-
+// prints all data
 void LineData::print() const
 {
     cout << date << " " << autokonsumpcja << " " << eksport << " " << import << " " << pobor << " " << produkcja << endl;
 }
 
+// prints only data without date
+void LineData::printData() const
+{
+	cout << "\t\t\t\t" << autokonsumpcja << " " << eksport << " " << import << " " << pobor << " " << produkcja << endl;
+}
+
+// prints all data as string
 string LineData::printString()
 {
     return date + " " + to_string(autokonsumpcja) + " " + to_string(eksport) + " " + to_string(import) + " " + to_string(pobor) + " " + to_string(produkcja);
