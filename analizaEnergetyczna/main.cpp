@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "LineData.h"
+#include "Logger.h"
 
 using namespace std;
 
@@ -17,6 +18,9 @@ int main()
         return 1;
     }
 
+
+    Logger logger("log");
+	Logger loggerError("log_error");
     vector<LineData> data;
 
     string line; 
@@ -34,7 +38,8 @@ int main()
 
     for (int i = 0; i < data.size(); i++)
     {
-        data[i].print();
+        //data[i].print();
+        logger.log("Added line to vector: " + data[i].printString());
     }
 
     file.close();

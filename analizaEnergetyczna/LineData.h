@@ -12,6 +12,8 @@ public:
     LineData(const string& line);
 
     void print();
+	
+	string printString();
 
 private:
     // Time,Autokonsumpcja (W),Eksport (W),Import (W),Pobór (W),Produkcja (W)
