@@ -11,29 +11,30 @@ using namespace std;
 
 bool lineValidation(const string& line)
 {
-	// check number of commas to see how many columns are in the line
-    int commaCount = count(line.begin(), line.end(), ',');
-
 	if (line.empty())
 	{
+		// Log empty line
 		loggerError.log("Pusta linia");
 		return false;
 	}
 	else if (line.find("Time") != string::npos)
 	{
+		// Log header line
 		loggerError.log("Znaleziono naglowek: " + line);
 		return false;
 	}
-    else if (   (line.find("X") != string::npos) || 
-                (line.find("y") != string::npos) || 
-                (line.find("Y") != string::npos) || 
-                (line.find("x") != string::npos))
+    else if ((line.find("X") != string::npos) || 
+             (line.find("y") != string::npos) || 
+             (line.find("Y") != string::npos) || 
+             (line.find("x") != string::npos))
     {
+		// Log other data
         loggerError.log("Znaleziono inne dane: " + line);
         return false;
     }
-    else if (commaCount != 5)
+    else if (count(line.begin(), line.end(), ',') != 5)
     {
+		// Log invalid number of parameters
         loggerError.log("Nieprawidlowa liczba parametrow: " + line);
         return false;
     }
@@ -41,10 +42,6 @@ bool lineValidation(const string& line)
 	{
 		return true;
 	}
-
-
-
-	return true;
 }
 
 
@@ -57,11 +54,9 @@ int main()
         return 1;
     }
 
+	// Vector to store the data from the file using the LineData class
     vector<LineData> data;
-
     string line; 
-    // Skip the first line !!!!!!!!!!!!
-    //getline(file, line);
 
     while (getline(file, line))
     {
@@ -72,13 +67,10 @@ int main()
         }
     }
 
-    for (int i = 0; i < data.size(); i++)
-    {
-        //data[i].print();
-        logger.log("Dodano linie do wektora: " + data[i].printString());
-    }
-
     file.close();
+
+	cout << "Wczytano " << data.size() << " linii" << endl;
+	cout << "Znaleziono " << loggerErrorCount << " bledow" << endl;
 
     return 0;
 }

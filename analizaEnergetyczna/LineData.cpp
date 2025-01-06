@@ -27,6 +27,8 @@ LineData::LineData(const string& line) {
     this->pobor = stof(values[4]);
     this->produkcja = stof(values[5]);
 
+	logger.log("Wczytano linie: " + this->printString());
+
     //this->print();
 }
 

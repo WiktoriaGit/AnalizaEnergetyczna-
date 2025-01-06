@@ -8,6 +8,9 @@
 Logger logger("log");
 Logger loggerError("log_error");
 
+// Define global counter for loggerError executions
+int loggerErrorCount = 0;
+
 Logger::Logger(const std::string& filename) {
     auto t = std::time(nullptr);
     std::tm tm;
@@ -37,5 +40,10 @@ void Logger::log(const std::string& message) {
         std::tm tm;
         localtime_s(&tm, &t);
         logFile << std::put_time(&tm, "%d.%m.%Y %H:%M:%S") << " " << message << std::endl;
+    }
+
+	// count loggerError executions for summary
+    if (this == &loggerError) {
+        ++loggerErrorCount;
     }
 }

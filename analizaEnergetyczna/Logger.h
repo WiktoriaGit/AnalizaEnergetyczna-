@@ -18,4 +18,7 @@ private:
 extern Logger logger;
 extern Logger loggerError;
 
+// Declare global counter for loggerError executions
+extern int loggerErrorCount;
+
 #endif // LOGGER_H
