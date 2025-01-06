@@ -6,6 +6,7 @@
 
 #include "LineData.h"
 #include "Logger.h"
+#include "TreeData.h"
 
 using namespace std;
 
@@ -56,6 +57,7 @@ int main()
 
 	// Vector to store the data from the file using the LineData class
     vector<LineData> data;
+    TreeData treeData;
     string line; 
 
     while (getline(file, line))
@@ -64,46 +66,61 @@ int main()
         {
             LineData ld(line);
             data.push_back(ld);
+			treeData.addData(ld);
         }
     }
 
     file.close();
 
+
+    //treeData.print();
+
+    // Get data between dates
+    string startDate = "15.10.2021 11:00";
+    string endDate = "15.10.2021 18:45";
+    vector<LineData> filteredData = treeData.getDataBetweenDates(startDate, endDate);
+
+    cout << "Data between " << startDate << " and " << endDate << ":" << endl;
+    for (const auto& ld : filteredData) {
+        ld.print();
+    }
+
+
+
+
     // Export data to binary file
-    ofstream binaryFile("data.bin", ios::binary);
-    if (!binaryFile.is_open()) {
-        cerr << "Error opening binary file" << endl;
-        return 1;
-    }
+    //ofstream binaryFile("data.bin", ios::binary);
+    //if (!binaryFile.is_open()) {
+    //    cerr << "Error opening binary file" << endl;
+    //    return 1;
+    //}
 
-    for (int i = 0; i < data.size(); i++)
-    {
-		data[i].serialize(binaryFile);
-    }
+    //for (const auto& ld : data) {
+    //    ld.serialize(binaryFile);
+    //}
 
 
-    binaryFile.close();
+    //binaryFile.close();
 
-    // Import data from binary file
-    ifstream binaryFileIn("data.bin", ios::binary);
-    if (!binaryFileIn.is_open()) {
-        cerr << "Error opening binary file for reading" << endl;
-        return 1;
-    }
+    //// Import data from binary file
+    //ifstream binaryFileIn("data.bin", ios::binary);
+    //if (!binaryFileIn.is_open()) {
+    //    cerr << "Error opening binary file for reading" << endl;
+    //    return 1;
+    //}
 
-    vector<LineData> importedData;
-    while (binaryFileIn.peek() != EOF) {
-        LineData ld(binaryFileIn);
-        importedData.push_back(ld);
-    }
+    //vector<LineData> importedData;
+    //while (binaryFileIn.peek() != EOF) {
+    //    LineData ld(binaryFileIn);
+    //    importedData.push_back(ld);
+    //}
 
-    binaryFileIn.close();
+    //binaryFileIn.close();
 
-    // Print imported data
-	for (int i = 0; i < importedData.size(); i++)
-	{
-		importedData[i].print();
-	}
+    //// Print imported data
+    ////for (const auto& ld : importedData) {
+    ////    ld.print();
+    ////}
 
 
 

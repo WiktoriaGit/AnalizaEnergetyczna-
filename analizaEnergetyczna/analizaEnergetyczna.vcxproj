@@ -130,10 +130,12 @@
     <ClCompile Include="LineData.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TreeData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LineData.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="TreeData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

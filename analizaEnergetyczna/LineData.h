@@ -1,3 +1,6 @@
+#ifndef LINEDATA_H
+#define LINEDATA_H
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,13 +16,15 @@ public:
 
 	LineData(ifstream& in);
 
-    void print();
+    void print() const;
 	
 	string printString();
 
-	void serialize(ofstream& out);
+	void serialize(ofstream& out) const;
 
 	void deserialize(ifstream& in);
+
+	string getDate() const { return date; }
 
 private:
     // Time,Autokonsumpcja (W),Eksport (W),Import (W),Pobór (W),Produkcja (W)
@@ -35,3 +40,5 @@ private:
 
 	float produkcja;
 };
+
+#endif // LINEDATA_H

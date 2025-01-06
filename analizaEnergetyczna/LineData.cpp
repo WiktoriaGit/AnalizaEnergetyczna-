@@ -37,7 +37,7 @@ LineData::LineData(ifstream& in) {
 }
 
 
-void LineData::print()
+void LineData::print() const
 {
     cout << date << " " << autokonsumpcja << " " << eksport << " " << import << " " << pobor << " " << produkcja << endl;
 }
@@ -47,7 +47,7 @@ string LineData::printString()
     return date + " " + to_string(autokonsumpcja) + " " + to_string(eksport) + " " + to_string(import) + " " + to_string(pobor) + " " + to_string(produkcja);
 }
 
-void LineData::serialize(ofstream& out) {
+void LineData::serialize(ofstream& out) const {
     size_t dateSize = date.size();
     out.write(reinterpret_cast<const char*>(&dateSize), sizeof(dateSize));
     out.write(date.c_str(), dateSize);
