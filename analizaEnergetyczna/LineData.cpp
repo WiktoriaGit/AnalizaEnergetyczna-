@@ -32,6 +32,11 @@ LineData::LineData(const string& line) {
     //this->print();
 }
 
+LineData::LineData(ifstream& in) {
+    deserialize(in);
+}
+
+
 void LineData::print()
 {
     cout << date << " " << autokonsumpcja << " " << eksport << " " << import << " " << pobor << " " << produkcja << endl;
@@ -40,4 +45,27 @@ void LineData::print()
 string LineData::printString()
 {
     return date + " " + to_string(autokonsumpcja) + " " + to_string(eksport) + " " + to_string(import) + " " + to_string(pobor) + " " + to_string(produkcja);
+}
+
+void LineData::serialize(ofstream& out) {
+    size_t dateSize = date.size();
+    out.write(reinterpret_cast<const char*>(&dateSize), sizeof(dateSize));
+    out.write(date.c_str(), dateSize);
+    out.write(reinterpret_cast<const char*>(&autokonsumpcja), sizeof(autokonsumpcja));
+    out.write(reinterpret_cast<const char*>(&eksport), sizeof(eksport));
+    out.write(reinterpret_cast<const char*>(&import), sizeof(import));
+    out.write(reinterpret_cast<const char*>(&pobor), sizeof(pobor));
+    out.write(reinterpret_cast<const char*>(&produkcja), sizeof(produkcja));
+}
+
+void LineData::deserialize(ifstream& in) {
+    size_t dateSize;
+    in.read(reinterpret_cast<char*>(&dateSize), sizeof(dateSize));
+    date.resize(dateSize);
+    in.read(&date[0], dateSize);
+    in.read(reinterpret_cast<char*>(&autokonsumpcja), sizeof(autokonsumpcja));
+    in.read(reinterpret_cast<char*>(&eksport), sizeof(eksport));
+    in.read(reinterpret_cast<char*>(&import), sizeof(import));
+    in.read(reinterpret_cast<char*>(&pobor), sizeof(pobor));
+    in.read(reinterpret_cast<char*>(&produkcja), sizeof(produkcja));
 }

@@ -69,6 +69,50 @@ int main()
 
     file.close();
 
+    // Export data to binary file
+    ofstream binaryFile("data.bin", ios::binary);
+    if (!binaryFile.is_open()) {
+        cerr << "Error opening binary file" << endl;
+        return 1;
+    }
+
+    for (int i = 0; i < data.size(); i++)
+    {
+		data[i].serialize(binaryFile);
+    }
+
+
+    binaryFile.close();
+
+    // Import data from binary file
+    ifstream binaryFileIn("data.bin", ios::binary);
+    if (!binaryFileIn.is_open()) {
+        cerr << "Error opening binary file for reading" << endl;
+        return 1;
+    }
+
+    vector<LineData> importedData;
+    while (binaryFileIn.peek() != EOF) {
+        LineData ld(binaryFileIn);
+        importedData.push_back(ld);
+    }
+
+    binaryFileIn.close();
+
+    // Print imported data
+	for (int i = 0; i < importedData.size(); i++)
+	{
+		importedData[i].print();
+	}
+
+
+
+
+
+
+
+
+
 	cout << "Wczytano " << data.size() << " linii" << endl;
 	cout << "Znaleziono " << loggerErrorCount << " bledow" << endl;
 
