@@ -10,8 +10,6 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
-
     ifstream file("Chart Export.csv");
     if (!file.is_open())
     {
@@ -21,12 +19,15 @@ int main()
 
     vector<LineData> data;
 
-    string line;
-    // Skip the first line
+    string line; 
+    // Skip the first line !!!!!!!!!!!!
     getline(file, line);
 
     while (getline(file, line))
     {
+        // Skip empty lines !!!!!!!!!!!
+        if (line.empty()) break;
+
         LineData ld(line);
         data.push_back(ld);
     }
