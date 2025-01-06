@@ -2,12 +2,13 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <vector>
 
 using namespace std;
 
 int main()
 {
-	cout << "Hello World!" << endl;
+    cout << "Hello World!" << endl;
 
     ifstream file("Chart Export.csv");
     if (!file.is_open())
@@ -21,15 +22,20 @@ int main()
     {
         stringstream ss(line);
         string value;
+        vector<string> values;
         while (getline(ss, value, ','))
         {
-            cout << value << " ";
+            values.push_back(value);
+        }
+
+        for (const auto& val : values)
+        {
+            cout << val << " ";
         }
         cout << endl;
     }
 
     file.close();
 
-
-	return 0;
+    return 0;
 }
