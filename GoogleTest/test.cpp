@@ -5,6 +5,7 @@
 #include "../analizaEnergetyczna/TreeData.cpp"
 #include "../analizaEnergetyczna/Logger.h"
 #include "../analizaEnergetyczna/Logger.cpp"
+#include "../analizaEnergetyczna/LineValidation.h"
 
 using namespace std;
 
@@ -38,6 +39,56 @@ TEST(LineDataTest, Serialization) {
     EXPECT_FLOAT_EQ(ld2.getImport(), 300.5);
     EXPECT_FLOAT_EQ(ld2.getPobor(), 400.5);
     EXPECT_FLOAT_EQ(ld2.getProdukcja(), 500.5);
+}
+
+TEST(LineValidationTest, EmptyLine) {
+    string line = "";
+    EXPECT_FALSE(lineValidation(line));
+}
+
+TEST(LineValidationTest, HeaderLine) {
+    string line = "Time,Autokonsumpcja (W),Eksport (W),Import (W),Pobor (W),Produkcja (W)";
+    EXPECT_FALSE(lineValidation(line));
+}
+
+TEST(LineValidationTest, LineWithInvalidCharacters) {
+    string line = "2023-10-15 12:00:00,X,200.5,300.5,400.5,500.5";
+    EXPECT_FALSE(lineValidation(line));
+}
+
+TEST(LineValidationTest, LineWithIncorrectNumberOfParameters) {
+    string line = "2023-10-15 12:00:00,100.5,200.5,300.5,400.5";
+    EXPECT_FALSE(lineValidation(line));
+}
+
+TEST(LineValidationTest, ValidLine) {
+    string line = "2023-10-15 12:00:00,100.5,200.5,300.5,400.5,500.5";
+    EXPECT_TRUE(lineValidation(line));
+}
+
+TEST(LineValidationTest, LineWithExtraSpaces) {
+    string line = " 2023-10-15 12:00:00 , 100.5 , 200.5 , 300.5 , 400.5 , 500.5 ";
+    EXPECT_TRUE(lineValidation(line));
+}
+
+TEST(LineValidationTest, LineWithLowercaseX) {
+    string line = "2023-10-15 12:00:00,x,200.5,300.5,400.5,500.5";
+    EXPECT_FALSE(lineValidation(line));
+}
+
+TEST(LineValidationTest, LineWithLowercaseY) {
+    string line = "2023-10-15 12:00:00,100.5,y,300.5,400.5,500.5";
+    EXPECT_FALSE(lineValidation(line));
+}
+
+TEST(LineValidationTest, LineWithUppercaseX) {
+    string line = "2023-10-15 12:00:00,100.5,200.5,X,400.5,500.5";
+    EXPECT_FALSE(lineValidation(line));
+}
+
+TEST(LineValidationTest, LineWithUppercaseY) {
+    string line = "2023-10-15 12:00:00,100.5,200.5,300.5,Y,500.5";
+    EXPECT_FALSE(lineValidation(line));
 }
 
 TEST(TreeDataTest, AddData) {
