@@ -1,0 +1,42 @@
+\doxysection{analiza\+Energetyczna/\+Line\+Validation.h File Reference}
+\hypertarget{_line_validation_8h}{}\label{_line_validation_8h}\index{analizaEnergetyczna/LineValidation.h@{analizaEnergetyczna/LineValidation.h}}
+
+
+Zawiera funkcjê waliduj¹c¹ wiersze z pliku CSV.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cctype$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include "{}Logger.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_line_validation_8h_af0848a17a462789065f4325be805a003}{line\+Validation}} (const std\+::string \&line)
+\begin{DoxyCompactList}\small\item\em Funkcja sprawdzaj¹ca poprawnoœæ wiersza danych. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Zawiera funkcjê waliduj¹c¹ wiersze z pliku CSV. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_line_validation_8h_af0848a17a462789065f4325be805a003}\index{LineValidation.h@{LineValidation.h}!lineValidation@{lineValidation}}
+\index{lineValidation@{lineValidation}!LineValidation.h@{LineValidation.h}}
+\doxysubsubsection{\texorpdfstring{lineValidation()}{lineValidation()}}
+{\footnotesize\ttfamily \label{_line_validation_8h_af0848a17a462789065f4325be805a003} 
+bool line\+Validation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line}{}\end{DoxyParamCaption})}
+
+
+
+Funkcja sprawdzaj¹ca poprawnoœæ wiersza danych. 
+
+Sprawdza, czy wiersz zawiera odpowiedni¹ liczbê parametrów, czy nie jest pusty i czy nie zawiera liter. 
+\begin{DoxyParams}{Parameters}
+{\em line} & Wiersz danych wejœciowych. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, jeœli wiersz jest poprawny, false w przeciwnym razie. 
+\end{DoxyReturn}

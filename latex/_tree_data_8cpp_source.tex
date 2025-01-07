@@ -1,0 +1,149 @@
+\doxysection{Tree\+Data.\+cpp}
+\hypertarget{_tree_data_8cpp_source}{}\label{_tree_data_8cpp_source}\index{analizaEnergetyczna/TreeData.cpp@{analizaEnergetyczna/TreeData.cpp}}
+\mbox{\hyperlink{_tree_data_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_tree_data_8h}{TreeData.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_data_a50a6670bd3ca409b5d5aa4cce0ebb7f8}{TreeData::addData}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_line_data}{LineData}}\&\ lineData)\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ stringstream\ ss(lineData.\mbox{\hyperlink{class_line_data_a72d49d341fa9afe4d3e6b792068a6f0b}{getDate}}());}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{string}\ token;}
+\DoxyCodeLine{00017\ \ \ \ \ vector<int>\ dateParts;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(ss,\ token,\ \textcolor{charliteral}{'.'}))\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ dateParts.push\_back(stoi(token));}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ year\ =\ dateParts[2];}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ month\ =\ dateParts[1];}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ day\ =\ dateParts[0];}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ hour\ =\ stoi(lineData.\mbox{\hyperlink{class_line_data_a72d49d341fa9afe4d3e6b792068a6f0b}{getDate}}().substr(11,\ 2));}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ minute\ =\ stoi(lineData.\mbox{\hyperlink{class_line_data_a72d49d341fa9afe4d3e6b792068a6f0b}{getDate}}().substr(14,\ 2));}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ quarter\ =\ (hour\ *\ 60\ +\ minute)\ /\ 360;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ years[year].year\ =\ year;}
+\DoxyCodeLine{00031\ \ \ \ \ years[year].months[month].month\ =\ month;}
+\DoxyCodeLine{00032\ \ \ \ \ years[year].months[month].days[day].day\ =\ day;}
+\DoxyCodeLine{00033\ \ \ \ \ years[year].months[month].days[day].quarters[quarter].quarter\ =\ quarter;}
+\DoxyCodeLine{00034\ \ \ \ \ years[year].months[month].days[day].quarters[quarter].hour\ =\ hour;}
+\DoxyCodeLine{00035\ \ \ \ \ years[year].months[month].days[day].quarters[quarter].minute\ =\ minute;}
+\DoxyCodeLine{00036\ \ \ \ \ years[year].months[month].days[day].quarters[quarter].data.push\_back(lineData);}
+\DoxyCodeLine{00037\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_data_a8ef9b84508f937c668c08a8bada8e169}{TreeData::print}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ yearPair\ :\ years)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tree_data_1_1_year_node}{YearNode}}\&\ yearNode\ =\ yearPair.second;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Year:\ "{}}\ <<\ yearNode.\mbox{\hyperlink{struct_tree_data_1_1_year_node_ab5b087991a9243b8e4da3f141471453c}{year}}\ <<\ endl;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ monthPair\ :\ yearNode.\mbox{\hyperlink{struct_tree_data_1_1_year_node_addf7aee60946340b38cea2d703d53596}{months}})\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tree_data_1_1_month_node}{MonthNode}}\&\ monthNode\ =\ monthPair.second;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)tMonth:\ "{}}\ <<\ monthNode.\mbox{\hyperlink{struct_tree_data_1_1_month_node_ad3de68542e77c64983a1f1965ef64611}{month}}\ <<\ endl;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ dayPair\ :\ monthNode.\mbox{\hyperlink{struct_tree_data_1_1_month_node_affe544862f8b2f3beda81a8f364d0cc0}{days}})\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tree_data_1_1_day_node}{DayNode}}\&\ dayNode\ =\ dayPair.second;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)tDay:\ "{}}\ <<\ dayNode.\mbox{\hyperlink{struct_tree_data_1_1_day_node_a04b5b96b96fc174adccc7e68bb829940}{day}}\ <<\ endl;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ quarterPair\ :\ dayNode.\mbox{\hyperlink{struct_tree_data_1_1_day_node_a78e6c371c4e5df7b4b1ce20f29b17e28}{quarters}})\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tree_data_1_1_quarter_node}{QuarterNode}}\&\ quarterNode\ =\ quarterPair.second;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)t\(\backslash\)tQuarter:\ "{}}\ <<\ quarterNode.\mbox{\hyperlink{struct_tree_data_1_1_quarter_node_ac339b88c6936439f91468ab428b685df}{quarter}}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ (Hour:\ "{}}\ <<\ quarterNode.\mbox{\hyperlink{struct_tree_data_1_1_quarter_node_ac3369f487aef182bfa23caa1a60810f8}{hour}}\ <<\ \textcolor{stringliteral}{"{},\ Minute:\ "{}}\ <<\ quarterNode.\mbox{\hyperlink{struct_tree_data_1_1_quarter_node_a520da3ab8f13a728aad79925ebe5cdc0}{minute}}\ <<\ \textcolor{stringliteral}{"{})"{}}\ <<\ endl;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ lineData\ :\ quarterNode.\mbox{\hyperlink{struct_tree_data_1_1_quarter_node_a8e5792012c275af39435a689af1f1992}{data}})\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lineData.printData();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ std::vector<LineData>\ \mbox{\hyperlink{class_tree_data_a4f0b4b214d5a9b44567b2f2bbf48fb88}{TreeData::getDataBetweenDates}}(\textcolor{keyword}{const}\ std::string\&\ startDate,\ \textcolor{keyword}{const}\ std::string\&\ endDate)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00072\ \ \ \ \ std::vector<LineData>\ result;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ std::tm\ tm\ =\ \{\};}
+\DoxyCodeLine{00075\ \ \ \ \ std::istringstream\ ss(startDate);}
+\DoxyCodeLine{00076\ \ \ \ \ ss\ >>\ std::get\_time(\&tm,\ \textcolor{stringliteral}{"{}\%d.\%m.\%Y\ \%H:\%M"{}});}
+\DoxyCodeLine{00077\ \ \ \ \ time\_t\ start\ =\ mktime(\&tm);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ ss.clear();}
+\DoxyCodeLine{00080\ \ \ \ \ ss.str(endDate);}
+\DoxyCodeLine{00081\ \ \ \ \ ss\ >>\ std::get\_time(\&tm,\ \textcolor{stringliteral}{"{}\%d.\%m.\%Y\ \%H:\%M"{}});}
+\DoxyCodeLine{00082\ \ \ \ \ time\_t\ end\ =\ mktime(\&tm);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ yearPair\ :\ years)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tree_data_1_1_year_node}{YearNode}}\&\ yearNode\ =\ yearPair.second;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ monthPair\ :\ yearNode.\mbox{\hyperlink{struct_tree_data_1_1_year_node_addf7aee60946340b38cea2d703d53596}{months}})\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tree_data_1_1_month_node}{MonthNode}}\&\ monthNode\ =\ monthPair.second;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ dayPair\ :\ monthNode.\mbox{\hyperlink{struct_tree_data_1_1_month_node_affe544862f8b2f3beda81a8f364d0cc0}{days}})\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tree_data_1_1_day_node}{DayNode}}\&\ dayNode\ =\ dayPair.second;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ quarterPair\ :\ dayNode.\mbox{\hyperlink{struct_tree_data_1_1_day_node_a78e6c371c4e5df7b4b1ce20f29b17e28}{quarters}})\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tree_data_1_1_quarter_node}{QuarterNode}}\&\ quarterNode\ =\ quarterPair.second;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ lineData\ :\ quarterNode.\mbox{\hyperlink{struct_tree_data_1_1_quarter_node_a8e5792012c275af39435a689af1f1992}{data}})\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::tm\ tm\ =\ \{\};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::istringstream\ ss(lineData.getDate());}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ss\ >>\ std::get\_time(\&tm,\ \textcolor{stringliteral}{"{}\%d.\%m.\%Y\ \%H:\%M"{}});}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ time\_t\ dataTime\ =\ mktime(\&tm);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dataTime\ >=\ start\ \&\&\ dataTime\ <=\ end)\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.push\_back(lineData);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00108\ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_data_a171071160435ce607ec2020e5ebc02d2}{TreeData::calculateSumsBetweenDates}}(\textcolor{keyword}{const}\ std::string\&\ startDate,\ \textcolor{keyword}{const}\ std::string\&\ endDate,\ \textcolor{keywordtype}{float}\&\ autokonsumpcjaSum,\ \textcolor{keywordtype}{float}\&\ eksportSum,\ \textcolor{keywordtype}{float}\&\ importSum,\ \textcolor{keywordtype}{float}\&\ poborSum,\ \textcolor{keywordtype}{float}\&\ produkcjaSum)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00119\ \ \ \ \ autokonsumpcjaSum\ =\ 0.0f;}
+\DoxyCodeLine{00120\ \ \ \ \ eksportSum\ =\ 0.0f;}
+\DoxyCodeLine{00121\ \ \ \ \ importSum\ =\ 0.0f;}
+\DoxyCodeLine{00122\ \ \ \ \ poborSum\ =\ 0.0f;}
+\DoxyCodeLine{00123\ \ \ \ \ produkcjaSum\ =\ 0.0f;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ std::vector<LineData>\ data\ =\ \mbox{\hyperlink{class_tree_data_a4f0b4b214d5a9b44567b2f2bbf48fb88}{getDataBetweenDates}}(startDate,\ endDate);}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ lineData\ :\ data)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ autokonsumpcjaSum\ +=\ lineData.getAutokonsumpcja();}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ eksportSum\ +=\ lineData.getEksport();}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ importSum\ +=\ lineData.getImport();}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ poborSum\ +=\ lineData.getPobor();}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ produkcjaSum\ +=\ lineData.getProdukcja();}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00143\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_data_aa850330e8e741df59c9efa10745ab32b}{TreeData::calculateAveragesBetweenDates}}(\textcolor{keyword}{const}\ std::string\&\ startDate,\ \textcolor{keyword}{const}\ std::string\&\ endDate,\ \textcolor{keywordtype}{float}\&\ autokonsumpcjaAvg,\ \textcolor{keywordtype}{float}\&\ eksportAvg,\ \textcolor{keywordtype}{float}\&\ importAvg,\ \textcolor{keywordtype}{float}\&\ poborAvg,\ \textcolor{keywordtype}{float}\&\ produkcjaAvg)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{float}\ autokonsumpcjaSum\ =\ 0.0f,\ eksportSum\ =\ 0.0f,\ importSum\ =\ 0.0f,\ poborSum\ =\ 0.0f,\ produkcjaSum\ =\ 0.0f;}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ std::vector<LineData>\ data\ =\ \mbox{\hyperlink{class_tree_data_a4f0b4b214d5a9b44567b2f2bbf48fb88}{getDataBetweenDates}}(startDate,\ endDate);}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ lineData\ :\ data)\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ autokonsumpcjaSum\ +=\ lineData.getAutokonsumpcja();}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ eksportSum\ +=\ lineData.getEksport();}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ importSum\ +=\ lineData.getImport();}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ poborSum\ +=\ lineData.getPobor();}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ produkcjaSum\ +=\ lineData.getProdukcja();}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ >\ 0)\ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ autokonsumpcjaAvg\ =\ autokonsumpcjaSum\ /\ count;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ eksportAvg\ =\ eksportSum\ /\ count;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ importAvg\ =\ importSum\ /\ count;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ poborAvg\ =\ poborSum\ /\ count;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ produkcjaAvg\ =\ produkcjaSum\ /\ count;}
+\DoxyCodeLine{00163\ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ autokonsumpcjaAvg\ =\ eksportAvg\ =\ importAvg\ =\ poborAvg\ =\ produkcjaAvg\ =\ 0.0f;}
+\DoxyCodeLine{00166\ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \}}
+
+\end{DoxyCode}

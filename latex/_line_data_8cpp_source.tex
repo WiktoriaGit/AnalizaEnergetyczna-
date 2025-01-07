@@ -1,0 +1,75 @@
+\doxysection{Line\+Data.\+cpp}
+\hypertarget{_line_data_8cpp_source}{}\label{_line_data_8cpp_source}\index{analizaEnergetyczna/LineData.cpp@{analizaEnergetyczna/LineData.cpp}}
+\mbox{\hyperlink{_line_data_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_line_data_8h}{LineData.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00014\ \mbox{\hyperlink{class_line_data_a408b3cf582b8bd744b6fbd3f96bb33f6}{LineData::LineData}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ line)\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ vector<string>\ values;}
+\DoxyCodeLine{00016\ \ \ \ \ stringstream\ ss(line);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{string}\ value;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(ss,\ value,\ \textcolor{charliteral}{','}))\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ value.erase(remove(value.begin(),\ value.end(),\ \textcolor{charliteral}{'\(\backslash\)"{}'}),\ value.end());}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ values.push\_back(value);}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ this-\/>date\ =\ values[0];}
+\DoxyCodeLine{00025\ \ \ \ \ this-\/>autokonsumpcja\ =\ stof(values[1]);}
+\DoxyCodeLine{00026\ \ \ \ \ this-\/>eksport\ =\ stof(values[2]);}
+\DoxyCodeLine{00027\ \ \ \ \ this-\/>\textcolor{keyword}{import}\ =\ stof(values[3]);}
+\DoxyCodeLine{00028\ \ \ \ \ this-\/>pobor\ =\ stof(values[4]);}
+\DoxyCodeLine{00029\ \ \ \ \ this-\/>produkcja\ =\ stof(values[5]);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{_logger_8cpp_a58509006ed5b9de0d17bbba8ab8b633f}{logger}}.\mbox{\hyperlink{class_logger_af5bd3aa615eb67a5a49c02d8040812db}{log}}(\textcolor{stringliteral}{"{}Wczytano\ linie:\ "{}}\ +\ this-\/>\mbox{\hyperlink{class_line_data_a1a6aa676d5bd18884c63724be6a34586}{printString}}());}
+\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{class_line_data_a408b3cf582b8bd744b6fbd3f96bb33f6}{LineData::LineData}}(ifstream\&\ in)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_line_data_ae5e3b7bad554383a95914263378c56b6}{deserialize}}(in);}
+\DoxyCodeLine{00038\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_line_data_a4f2bcdd123eb79fe5320d712e90ea438}{LineData::print}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00042\ \ \ \ \ cout\ <<\ date\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ autokonsumpcja\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ eksport\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ \textcolor{keyword}{import}\ <<\ "{}\ \textcolor{stringliteral}{"{}\ <<\ pobor\ <<\ "{}}\ \textcolor{stringliteral}{"{}\ <<\ produkcja\ <<\ endl;}}
+\DoxyCodeLine{00043\ \textcolor{stringliteral}{\}}}
+\DoxyCodeLine{00044\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00046\ void\ LineData::printData()\ const\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ cout\ <<\ "{}\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t\textcolor{stringliteral}{"{}\ <<\ autokonsumpcja\ <<\ "{}}\ \textcolor{stringliteral}{"{}\ <<\ eksport\ <<\ "{}}\ \textcolor{stringliteral}{"{}\ <<\ import\ <<\ "{}}\ \textcolor{stringliteral}{"{}\ <<\ pobor\ <<\ "{}}\ \textcolor{stringliteral}{"{}\ <<\ produkcja\ <<\ endl;}}
+\DoxyCodeLine{00048\ \textcolor{stringliteral}{\}}}
+\DoxyCodeLine{00049\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00052\ string\ LineData::printString()\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ return\ date\ +\ "{}\ \textcolor{stringliteral}{"{}\ +\ to\_string(autokonsumpcja)\ +\ "{}}\ \textcolor{stringliteral}{"{}\ +\ to\_string(eksport)\ +\ "{}}\ \textcolor{stringliteral}{"{}\ +\ to\_string(import)\ +\ "{}}\ \textcolor{stringliteral}{"{}\ +}}
+\DoxyCodeLine{00054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ to\_string(pobor)\ +\ "{}}\ \textcolor{stringliteral}{"{}\ +\ to\_string(produkcja);}}
+\DoxyCodeLine{00055\ \textcolor{stringliteral}{\}}}
+\DoxyCodeLine{00056\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00059\ void\ LineData::serialize(ofstream\&\ out)\ const\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ size\_t\ dateSize\ =\ date.size();}
+\DoxyCodeLine{00061\ \ \ \ \ out.write(reinterpret\_cast<const\ char*>(\&dateSize),\ sizeof(dateSize));}
+\DoxyCodeLine{00062\ \ \ \ \ out.write(date.c\_str(),\ dateSize);}
+\DoxyCodeLine{00063\ \ \ \ \ out.write(reinterpret\_cast<const\ char*>(\&autokonsumpcja),\ sizeof(autokonsumpcja));}
+\DoxyCodeLine{00064\ \ \ \ \ out.write(reinterpret\_cast<const\ char*>(\&eksport),\ sizeof(eksport));}
+\DoxyCodeLine{00065\ \ \ \ \ out.write(reinterpret\_cast<const\ char*>(\&import),\ sizeof(import));}
+\DoxyCodeLine{00066\ \ \ \ \ out.write(reinterpret\_cast<const\ char*>(\&pobor),\ sizeof(pobor));}
+\DoxyCodeLine{00067\ \ \ \ \ out.write(reinterpret\_cast<const\ char*>(\&produkcja),\ sizeof(produkcja));}
+\DoxyCodeLine{00068\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00072\ void\ LineData::deserialize(ifstream\&\ in)\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ size\_t\ dateSize;}
+\DoxyCodeLine{00074\ \ \ \ \ in.read(reinterpret\_cast<char*>(\&dateSize),\ sizeof(dateSize));}
+\DoxyCodeLine{00075\ \ \ \ \ date.resize(dateSize);}
+\DoxyCodeLine{00076\ \ \ \ \ in.read(\&date[0],\ dateSize);}
+\DoxyCodeLine{00077\ \ \ \ \ in.read(reinterpret\_cast<char*>(\&autokonsumpcja),\ sizeof(autokonsumpcja));}
+\DoxyCodeLine{00078\ \ \ \ \ in.read(reinterpret\_cast<char*>(\&eksport),\ sizeof(eksport));}
+\DoxyCodeLine{00079\ \ \ \ \ in.read(reinterpret\_cast<char*>(\&import),\ sizeof(import));}
+\DoxyCodeLine{00080\ \ \ \ \ in.read(reinterpret\_cast<char*>(\&pobor),\ sizeof(pobor));}
+\DoxyCodeLine{00081\ \ \ \ \ in.read(reinterpret\_cast<char*>(\&produkcja),\ sizeof(produkcja));}
+\DoxyCodeLine{00082\ \}}
+
+\end{DoxyCode}

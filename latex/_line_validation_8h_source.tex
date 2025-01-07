@@ -1,0 +1,45 @@
+\doxysection{Line\+Validation.\+h}
+\hypertarget{_line_validation_8h_source}{}\label{_line_validation_8h_source}\index{analizaEnergetyczna/LineValidation.h@{analizaEnergetyczna/LineValidation.h}}
+\mbox{\hyperlink{_line_validation_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ LINEVALIDATION\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ LINEVALIDATION\_H}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <cctype>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_line_validation_8h_af0848a17a462789065f4325be805a003}{lineValidation}}(\textcolor{keyword}{const}\ std::string\&\ line)}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (line.empty())}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_logger_8cpp_a9edb8974fc227a047d49dd7177135ef3}{loggerError}}.\mbox{\hyperlink{class_logger_af5bd3aa615eb67a5a49c02d8040812db}{log}}(\textcolor{stringliteral}{"{}Pusta\ linia"{}});}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (line.find(\textcolor{stringliteral}{"{}Time"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_logger_8cpp_a9edb8974fc227a047d49dd7177135ef3}{loggerError}}.\mbox{\hyperlink{class_logger_af5bd3aa615eb67a5a49c02d8040812db}{log}}(\textcolor{stringliteral}{"{}Znaleziono\ nag³ówek:\ "{}}\ +\ line);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::any\_of(line.begin(),\ line.end(),\ [](\textcolor{keywordtype}{char}\ c)\ \{\ return\ std::isalpha(c);\ \}))}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_logger_8cpp_a9edb8974fc227a047d49dd7177135ef3}{loggerError}}.\mbox{\hyperlink{class_logger_af5bd3aa615eb67a5a49c02d8040812db}{log}}(\textcolor{stringliteral}{"{}Znaleziono\ inne\ dane:\ "{}}\ +\ line);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::count(line.begin(),\ line.end(),\ \textcolor{charliteral}{','})\ !=\ 5)}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_logger_8cpp_a9edb8974fc227a047d49dd7177135ef3}{loggerError}}.\mbox{\hyperlink{class_logger_af5bd3aa615eb67a5a49c02d8040812db}{log}}(\textcolor{stringliteral}{"{}Nieprawid³owa\ liczba\ parametrów: "{}}\ +\ line);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LINEVALIDATION\_H}}
+
+\end{DoxyCode}

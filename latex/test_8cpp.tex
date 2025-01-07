@@ -1,0 +1,111 @@
+\doxysection{Google\+Test/test.cpp File Reference}
+\hypertarget{test_8cpp}{}\label{test_8cpp}\index{GoogleTest/test.cpp@{GoogleTest/test.cpp}}
+
+
+Zawiera zestaw testów jednostkowych dla modu³ów \doxylink{class_line_data}{Line\+Data}, \doxylink{class_tree_data}{Tree\+Data}, \doxylink{class_logger}{Logger} i Line\+Validation.  
+
+
+{\ttfamily \#include "{}pch.\+h"{}}\newline
+{\ttfamily \#include "{}../analiza\+Energetyczna/\+Line\+Data.\+h"{}}\newline
+{\ttfamily \#include "{}../analiza\+Energetyczna/\+Line\+Data.\+cpp"{}}\newline
+{\ttfamily \#include "{}../analiza\+Energetyczna/\+Tree\+Data.\+h"{}}\newline
+{\ttfamily \#include "{}../analiza\+Energetyczna/\+Tree\+Data.\+cpp"{}}\newline
+{\ttfamily \#include "{}../analiza\+Energetyczna/\+Logger.\+h"{}}\newline
+{\ttfamily \#include "{}../analiza\+Energetyczna/\+Logger.\+cpp"{}}\newline
+{\ttfamily \#include "{}../analiza\+Energetyczna/\+Line\+Validation.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{test_8cpp_ae5d327e9d97de676e95910458b87b5b9}{TEST}} (Line\+Data\+Test, Constructor\+From\+String)
+\begin{DoxyCompactList}\small\item\em Testuje konstruktor klasy \doxylink{class_line_data}{Line\+Data}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_a16f025b94064b576835ebeac5338cf39}{TEST}} (Line\+Data\+Test, Serialization)
+\begin{DoxyCompactList}\small\item\em Testuje serializacjê i deserializacjê klasy \doxylink{class_line_data}{Line\+Data}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_a0a8d6a7ea2084c7e002afaf78bcabd47}{TEST}} (Line\+Validation\+Test, Empty\+Line)
+\begin{DoxyCompactList}\small\item\em Testuje funkcjê waliduj¹c¹ puste linie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_a43da72f29fc4dd6f872f02293bf40e49}{TEST}} (Line\+Validation\+Test, Header\+Line)
+\begin{DoxyCompactList}\small\item\em Testuje funkcjê waliduj¹c¹ linie z nag³ówkami. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_af24d81ec3650e650a2fdf251f75f63cb}{TEST}} (Line\+Validation\+Test, Line\+With\+Invalid\+Characters)
+\begin{DoxyCompactList}\small\item\em Testuje funkcjê waliduj¹c¹ linie z nieprawid³owymi znakami. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_ada664310cbb2b17378644995f7495f10}{TEST}} (Tree\+Data\+Test, Add\+Data)
+\begin{DoxyCompactList}\small\item\em Testuje dodawanie danych do struktury drzewa. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_aaf7fb70fde016b80bc505cb48eab8217}{TEST}} (Tree\+Data\+Test, Calculate\+Sums\+Between\+Dates)
+\begin{DoxyCompactList}\small\item\em Testuje obliczanie sum w strukturze drzewa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Zawiera zestaw testów jednostkowych dla modu³ów \doxylink{class_line_data}{Line\+Data}, \doxylink{class_tree_data}{Tree\+Data}, \doxylink{class_logger}{Logger} i Line\+Validation. 
+
+Testy jednostkowe zosta³y zaimplementowane z u¿yciem frameworka Google\+Test. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_8cpp_ae5d327e9d97de676e95910458b87b5b9}\index{test.cpp@{test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily \label{test_8cpp_ae5d327e9d97de676e95910458b87b5b9} 
+TEST (\begin{DoxyParamCaption}\item[{Line\+Data\+Test}]{}{, }\item[{Constructor\+From\+String}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testuje konstruktor klasy \doxylink{class_line_data}{Line\+Data}. 
+
+Sprawdza, czy wartoœci wczytane z ci¹gu znaków s¹ poprawnie przypisane. \Hypertarget{test_8cpp_a16f025b94064b576835ebeac5338cf39}\index{test.cpp@{test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily \label{test_8cpp_a16f025b94064b576835ebeac5338cf39} 
+TEST (\begin{DoxyParamCaption}\item[{Line\+Data\+Test}]{}{, }\item[{Serialization}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testuje serializacjê i deserializacjê klasy \doxylink{class_line_data}{Line\+Data}. 
+
+Sprawdza, czy dane zapisane do pliku binarnego s¹ poprawnie odczytywane. \Hypertarget{test_8cpp_a0a8d6a7ea2084c7e002afaf78bcabd47}\index{test.cpp@{test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily \label{test_8cpp_a0a8d6a7ea2084c7e002afaf78bcabd47} 
+TEST (\begin{DoxyParamCaption}\item[{Line\+Validation\+Test}]{}{, }\item[{Empty\+Line}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testuje funkcjê waliduj¹c¹ puste linie. 
+
+Sprawdza, czy funkcja zwraca false dla pustej linii. \Hypertarget{test_8cpp_a43da72f29fc4dd6f872f02293bf40e49}\index{test.cpp@{test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily \label{test_8cpp_a43da72f29fc4dd6f872f02293bf40e49} 
+TEST (\begin{DoxyParamCaption}\item[{Line\+Validation\+Test}]{}{, }\item[{Header\+Line}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testuje funkcjê waliduj¹c¹ linie z nag³ówkami. 
+
+Sprawdza, czy funkcja zwraca false dla linii z nag³ówkiem. \Hypertarget{test_8cpp_af24d81ec3650e650a2fdf251f75f63cb}\index{test.cpp@{test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily \label{test_8cpp_af24d81ec3650e650a2fdf251f75f63cb} 
+TEST (\begin{DoxyParamCaption}\item[{Line\+Validation\+Test}]{}{, }\item[{Line\+With\+Invalid\+Characters}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testuje funkcjê waliduj¹c¹ linie z nieprawid³owymi znakami. 
+
+Sprawdza, czy funkcja zwraca false dla linii z literami. \Hypertarget{test_8cpp_ada664310cbb2b17378644995f7495f10}\index{test.cpp@{test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily \label{test_8cpp_ada664310cbb2b17378644995f7495f10} 
+TEST (\begin{DoxyParamCaption}\item[{Tree\+Data\+Test}]{}{, }\item[{Add\+Data}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testuje dodawanie danych do struktury drzewa. 
+
+Sprawdza, czy dane s¹ poprawnie przechowywane w strukturze drzewa. \Hypertarget{test_8cpp_aaf7fb70fde016b80bc505cb48eab8217}\index{test.cpp@{test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily \label{test_8cpp_aaf7fb70fde016b80bc505cb48eab8217} 
+TEST (\begin{DoxyParamCaption}\item[{Tree\+Data\+Test}]{}{, }\item[{Calculate\+Sums\+Between\+Dates}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testuje obliczanie sum w strukturze drzewa. 
+
+Sprawdza, czy sumy s¹ poprawnie obliczane w okreœlonym przedziale czasowym. 

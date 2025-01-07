@@ -1,0 +1,77 @@
+\doxysection{Logger Class Reference}
+\hypertarget{class_logger}{}\label{class_logger}\index{Logger@{Logger}}
+
+
+Klasa obs³uguj¹ca logowanie komunikatów do plików tekstowych.  
+
+
+
+
+{\ttfamily \#include $<$Logger.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_logger_a4f2ee02db1d03a83b6b9b43808e09f15}{Logger}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Konstruktor klasy \doxylink{class_logger}{Logger}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a}{\texorpdfstring{$\sim$}{\string~}\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor klasy \doxylink{class_logger}{Logger}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_af5bd3aa615eb67a5a49c02d8040812db}{log}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Zapisuje komunikat do pliku logu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa obs³uguj¹ca logowanie komunikatów do plików tekstowych. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_logger_a4f2ee02db1d03a83b6b9b43808e09f15}\index{Logger@{Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}}
+{\footnotesize\ttfamily \label{class_logger_a4f2ee02db1d03a83b6b9b43808e09f15} 
+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor klasy \doxylink{class_logger}{Logger}. 
+
+Tworzy plik logu z unikaln¹ nazw¹ opart¹ na aktualnej dacie i godzinie. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & Nazwa podstawowa pliku logu. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a}\index{Logger@{Logger}!````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}}
+\index{````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Logger()}{\string~Logger()}}
+{\footnotesize\ttfamily \label{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a} 
+Logger\+::\texorpdfstring{$\sim$}{\string~}\+Logger (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destruktor klasy \doxylink{class_logger}{Logger}. 
+
+Zamyka otwarty plik logu.
+
+Zamykany jest otwarty plik logu. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_logger_af5bd3aa615eb67a5a49c02d8040812db}\index{Logger@{Logger}!log@{log}}
+\index{log@{log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily \label{class_logger_af5bd3aa615eb67a5a49c02d8040812db} 
+void Logger\+::log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Zapisuje komunikat do pliku logu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Komunikat do zapisania. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+analiza\+Energetyczna/\mbox{\hyperlink{_logger_8h}{Logger.\+h}}\item 
+analiza\+Energetyczna/\mbox{\hyperlink{_logger_8cpp}{Logger.\+cpp}}\end{DoxyCompactItemize}

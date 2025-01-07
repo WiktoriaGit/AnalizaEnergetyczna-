@@ -1,0 +1,57 @@
+\doxysection{Line\+Data.\+h}
+\hypertarget{_line_data_8h_source}{}\label{_line_data_8h_source}\index{analizaEnergetyczna/LineData.h@{analizaEnergetyczna/LineData.h}}
+\mbox{\hyperlink{_line_data_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ LINEDATA\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ LINEDATA\_H}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_line_data}{LineData}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_line_data_a408b3cf582b8bd744b6fbd3f96bb33f6}{LineData}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ line);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_line_data_a408b3cf582b8bd744b6fbd3f96bb33f6}{LineData}}(ifstream\&\ in);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_line_data_a4f2bcdd123eb79fe5320d712e90ea438}{print}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_line_data_aa1d4ed6d82e6dfff48dca18eecb2aae4}{printData}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_line_data_a1a6aa676d5bd18884c63724be6a34586}{printString}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_line_data_a5c410d5a45f31ed5887d84a100787bf5}{serialize}}(ofstream\&\ out)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_line_data_ae5e3b7bad554383a95914263378c56b6}{deserialize}}(ifstream\&\ in);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_line_data_a72d49d341fa9afe4d3e6b792068a6f0b}{getDate}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ date;\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_line_data_a6c5a9a0e0af68904bda2c5d9cebc1083}{getAutokonsumpcja}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ autokonsumpcja;\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_line_data_a9274cd9aa774d5d669dc9a271d494b37}{getEksport}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ eksport;\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_line_data_ac4b9318b542eeeb5f69f18f0c10169b9}{getImport}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{import};\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_line_data_af2a453081f7b8d3bd9c06511234ce424}{getPobor}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ pobor;\ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_line_data_aed686d39142faec382ff624fea1d56ee}{getProdukcja}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ produkcja;\ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{string}\ date;\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{float}\ autokonsumpcja;\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{float}\ eksport;\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{float}\ \textcolor{keyword}{import};\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{float}\ pobor;\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{float}\ produkcja;\ }
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LINEDATA\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,223 @@
+\doxysection{Tree\+Data Class Reference}
+\hypertarget{class_tree_data}{}\label{class_tree_data}\index{TreeData@{TreeData}}
+
+
+Klasa obs³uguj¹ca hierarchiczn¹ strukturê danych z pliku CSV.  
+
+
+
+
+{\ttfamily \#include $<$Tree\+Data.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_tree_data_1_1_day_node}{Day\+Node}}
+\begin{DoxyCompactList}\small\item\em Reprezentuje dane dzienne. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_tree_data_1_1_month_node}{Month\+Node}}
+\begin{DoxyCompactList}\small\item\em Reprezentuje dane miesiêczne. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_tree_data_1_1_quarter_node}{Quarter\+Node}}
+\begin{DoxyCompactList}\small\item\em Reprezentuje dane z podzia³em na kwarta³y dnia. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_tree_data_1_1_year_node}{Year\+Node}}
+\begin{DoxyCompactList}\small\item\em Reprezentuje dane roczne. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tree_data_a50a6670bd3ca409b5d5aa4cce0ebb7f8}{add\+Data}} (const \mbox{\hyperlink{class_line_data}{Line\+Data}} \&line\+Data)
+\begin{DoxyCompactList}\small\item\em Dodaje dane do struktury drzewa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_data_a8ef9b84508f937c668c08a8bada8e169}{print}} () const
+\begin{DoxyCompactList}\small\item\em Wyœwietla ca³¹ strukturê drzewa. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_line_data}{Line\+Data}} $>$ \mbox{\hyperlink{class_tree_data_a4f0b4b214d5a9b44567b2f2bbf48fb88}{get\+Data\+Between\+Dates}} (const std\+::string \&start\+Date, const std\+::string \&end\+Date) const
+\begin{DoxyCompactList}\small\item\em Pobiera dane w podanym przedziale czasowym. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_data_a171071160435ce607ec2020e5ebc02d2}{calculate\+Sums\+Between\+Dates}} (const std\+::string \&start\+Date, const std\+::string \&end\+Date, float \&autokonsumpcja\+Sum, float \&eksport\+Sum, float \&import\+Sum, float \&pobor\+Sum, float \&produkcja\+Sum) const
+\begin{DoxyCompactList}\small\item\em Oblicza sumy danych w podanym przedziale czasowym. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_data_aa850330e8e741df59c9efa10745ab32b}{calculate\+Averages\+Between\+Dates}} (const std\+::string \&start\+Date, const std\+::string \&end\+Date, float \&autokonsumpcja\+Avg, float \&eksport\+Avg, float \&import\+Avg, float \&pobor\+Avg, float \&produkcja\+Avg) const
+\begin{DoxyCompactList}\small\item\em Oblicza œrednie dane w podanym przedziale czasowym. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_data_a3d41b983b71004355830899078a0b474}{compare\+Data\+Between\+Dates}} (const std\+::string \&start\+Date1, const std\+::string \&end\+Date1, const std\+::string \&start\+Date2, const std\+::string \&end\+Date2, float \&autokonsumpcja\+Diff, float \&eksport\+Diff, float \&import\+Diff, float \&pobor\+Diff, float \&produkcja\+Diff) const
+\begin{DoxyCompactList}\small\item\em Porównuje dane miêdzy dwoma zakresami czasowymi. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_line_data}{Line\+Data}} $>$ \mbox{\hyperlink{class_tree_data_a6a885ef604a22f327f6aed7824242a45}{search\+Records\+With\+Tolerance}} (const std\+::string \&start\+Date, const std\+::string \&end\+Date, float value, float tolerance) const
+\begin{DoxyCompactList}\small\item\em Wyszukuje rekordy w podanym zakresie czasowym z uwzglêdnieniem tolerancji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa obs³uguj¹ca hierarchiczn¹ strukturê danych z pliku CSV. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tree_data_a50a6670bd3ca409b5d5aa4cce0ebb7f8}\index{TreeData@{TreeData}!addData@{addData}}
+\index{addData@{addData}!TreeData@{TreeData}}
+\doxysubsubsection{\texorpdfstring{addData()}{addData()}}
+{\footnotesize\ttfamily \label{class_tree_data_a50a6670bd3ca409b5d5aa4cce0ebb7f8} 
+void Tree\+Data\+::add\+Data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_line_data}{Line\+Data}} \&}]{line\+Data}{}\end{DoxyParamCaption})}
+
+
+
+Dodaje dane do struktury drzewa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line\+Data} & Obiekt \doxylink{class_line_data}{Line\+Data} reprezentuj¹cy wiersz danych.\\
+\hline
+{\em line\+Data} & Obiekt \doxylink{class_line_data}{Line\+Data} reprezentuj¹cy dane wiersza. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tree_data_aa850330e8e741df59c9efa10745ab32b}\index{TreeData@{TreeData}!calculateAveragesBetweenDates@{calculateAveragesBetweenDates}}
+\index{calculateAveragesBetweenDates@{calculateAveragesBetweenDates}!TreeData@{TreeData}}
+\doxysubsubsection{\texorpdfstring{calculateAveragesBetweenDates()}{calculateAveragesBetweenDates()}}
+{\footnotesize\ttfamily \label{class_tree_data_aa850330e8e741df59c9efa10745ab32b} 
+void Tree\+Data\+::calculate\+Averages\+Between\+Dates (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{start\+Date}{, }\item[{const std\+::string \&}]{end\+Date}{, }\item[{float \&}]{autokonsumpcja\+Avg}{, }\item[{float \&}]{eksport\+Avg}{, }\item[{float \&}]{import\+Avg}{, }\item[{float \&}]{pobor\+Avg}{, }\item[{float \&}]{produkcja\+Avg}{}\end{DoxyParamCaption}) const}
+
+
+
+Oblicza œrednie dane w podanym przedziale czasowym. 
+
+Oblicza œrednie wartoœci w okreœlonym przedziale czasowym.
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em start\+Date} & Data pocz¹tkowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+ & {\em end\+Date} & Data koñcowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+\mbox{\texttt{ out}}  & {\em autokonsumpcja\+Avg} & Œrednia autokonsumpcji. \\
+\hline
+\mbox{\texttt{ out}}  & {\em eksport\+Avg} & Œrednia eksportu. \\
+\hline
+\mbox{\texttt{ out}}  & {\em import\+Avg} & Œrednia importu. \\
+\hline
+\mbox{\texttt{ out}}  & {\em pobor\+Avg} & Œrednia poboru. \\
+\hline
+\mbox{\texttt{ out}}  & {\em produkcja\+Avg} & Œrednia produkcji. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tree_data_a171071160435ce607ec2020e5ebc02d2}\index{TreeData@{TreeData}!calculateSumsBetweenDates@{calculateSumsBetweenDates}}
+\index{calculateSumsBetweenDates@{calculateSumsBetweenDates}!TreeData@{TreeData}}
+\doxysubsubsection{\texorpdfstring{calculateSumsBetweenDates()}{calculateSumsBetweenDates()}}
+{\footnotesize\ttfamily \label{class_tree_data_a171071160435ce607ec2020e5ebc02d2} 
+void Tree\+Data\+::calculate\+Sums\+Between\+Dates (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{start\+Date}{, }\item[{const std\+::string \&}]{end\+Date}{, }\item[{float \&}]{autokonsumpcja\+Sum}{, }\item[{float \&}]{eksport\+Sum}{, }\item[{float \&}]{import\+Sum}{, }\item[{float \&}]{pobor\+Sum}{, }\item[{float \&}]{produkcja\+Sum}{}\end{DoxyParamCaption}) const}
+
+
+
+Oblicza sumy danych w podanym przedziale czasowym. 
+
+Oblicza sumy wartoœci w okreœlonym przedziale czasowym.
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em start\+Date} & Data pocz¹tkowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+ & {\em end\+Date} & Data koñcowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+\mbox{\texttt{ out}}  & {\em autokonsumpcja\+Sum} & Suma autokonsumpcji. \\
+\hline
+\mbox{\texttt{ out}}  & {\em eksport\+Sum} & Suma eksportu. \\
+\hline
+\mbox{\texttt{ out}}  & {\em import\+Sum} & Suma importu. \\
+\hline
+\mbox{\texttt{ out}}  & {\em pobor\+Sum} & Suma poboru. \\
+\hline
+\mbox{\texttt{ out}}  & {\em produkcja\+Sum} & Suma produkcji. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tree_data_a3d41b983b71004355830899078a0b474}\index{TreeData@{TreeData}!compareDataBetweenDates@{compareDataBetweenDates}}
+\index{compareDataBetweenDates@{compareDataBetweenDates}!TreeData@{TreeData}}
+\doxysubsubsection{\texorpdfstring{compareDataBetweenDates()}{compareDataBetweenDates()}}
+{\footnotesize\ttfamily \label{class_tree_data_a3d41b983b71004355830899078a0b474} 
+void Tree\+Data\+::compare\+Data\+Between\+Dates (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{start\+Date1}{, }\item[{const std\+::string \&}]{end\+Date1}{, }\item[{const std\+::string \&}]{start\+Date2}{, }\item[{const std\+::string \&}]{end\+Date2}{, }\item[{float \&}]{autokonsumpcja\+Diff}{, }\item[{float \&}]{eksport\+Diff}{, }\item[{float \&}]{import\+Diff}{, }\item[{float \&}]{pobor\+Diff}{, }\item[{float \&}]{produkcja\+Diff}{}\end{DoxyParamCaption}) const}
+
+
+
+Porównuje dane miêdzy dwoma zakresami czasowymi. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em start\+Date1} & Data pocz¹tkowa pierwszego zakresu. \\
+\hline
+ & {\em end\+Date1} & Data koñcowa pierwszego zakresu. \\
+\hline
+ & {\em start\+Date2} & Data pocz¹tkowa drugiego zakresu. \\
+\hline
+ & {\em end\+Date2} & Data koñcowa drugiego zakresu. \\
+\hline
+\mbox{\texttt{ out}}  & {\em autokonsumpcja\+Diff} & Ró¿nica autokonsumpcji. \\
+\hline
+\mbox{\texttt{ out}}  & {\em eksport\+Diff} & Ró¿nica eksportu. \\
+\hline
+\mbox{\texttt{ out}}  & {\em import\+Diff} & Ró¿nica importu. \\
+\hline
+\mbox{\texttt{ out}}  & {\em pobor\+Diff} & Ró¿nica poboru. \\
+\hline
+\mbox{\texttt{ out}}  & {\em produkcja\+Diff} & Ró¿nica produkcji. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tree_data_a4f0b4b214d5a9b44567b2f2bbf48fb88}\index{TreeData@{TreeData}!getDataBetweenDates@{getDataBetweenDates}}
+\index{getDataBetweenDates@{getDataBetweenDates}!TreeData@{TreeData}}
+\doxysubsubsection{\texorpdfstring{getDataBetweenDates()}{getDataBetweenDates()}}
+{\footnotesize\ttfamily \label{class_tree_data_a4f0b4b214d5a9b44567b2f2bbf48fb88} 
+std\+::vector$<$ \mbox{\hyperlink{class_line_data}{Line\+Data}} $>$ Tree\+Data\+::get\+Data\+Between\+Dates (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{start\+Date}{, }\item[{const std\+::string \&}]{end\+Date}{}\end{DoxyParamCaption}) const}
+
+
+
+Pobiera dane w podanym przedziale czasowym. 
+
+Pobiera dane z drzewa w okreœlonym przedziale czasowym.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Date} & Data pocz¹tkowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+{\em end\+Date} & Data koñcowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Wektor obiektów \doxylink{class_line_data}{Line\+Data} w podanym zakresie czasowym.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Date} & Data pocz¹tkowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+{\em end\+Date} & Data koñcowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Wektor obiektów \doxylink{class_line_data}{Line\+Data} w podanym przedziale czasowym. 
+\end{DoxyReturn}
+\Hypertarget{class_tree_data_a8ef9b84508f937c668c08a8bada8e169}\index{TreeData@{TreeData}!print@{print}}
+\index{print@{print}!TreeData@{TreeData}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily \label{class_tree_data_a8ef9b84508f937c668c08a8bada8e169} 
+void Tree\+Data\+::print (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Wyœwietla ca³¹ strukturê drzewa. 
+
+Wyœwietla zawartoœæ drzewa na standardowym wyjœciu. \Hypertarget{class_tree_data_a6a885ef604a22f327f6aed7824242a45}\index{TreeData@{TreeData}!searchRecordsWithTolerance@{searchRecordsWithTolerance}}
+\index{searchRecordsWithTolerance@{searchRecordsWithTolerance}!TreeData@{TreeData}}
+\doxysubsubsection{\texorpdfstring{searchRecordsWithTolerance()}{searchRecordsWithTolerance()}}
+{\footnotesize\ttfamily \label{class_tree_data_a6a885ef604a22f327f6aed7824242a45} 
+std\+::vector$<$ \mbox{\hyperlink{class_line_data}{Line\+Data}} $>$ Tree\+Data\+::search\+Records\+With\+Tolerance (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{start\+Date}{, }\item[{const std\+::string \&}]{end\+Date}{, }\item[{float}]{value}{, }\item[{float}]{tolerance}{}\end{DoxyParamCaption}) const}
+
+
+
+Wyszukuje rekordy w podanym zakresie czasowym z uwzglêdnieniem tolerancji. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Date} & Data pocz¹tkowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+{\em end\+Date} & Data koñcowa w formacie dd.\+mm.\+yyyy hh\+:mm. \\
+\hline
+{\em value} & Wartoœæ wyszukiwana. \\
+\hline
+{\em tolerance} & Tolerancja dla wartoœci. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Wektor obiektów \doxylink{class_line_data}{Line\+Data} spe³niaj¹cych kryteria wyszukiwania. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+analiza\+Energetyczna/\mbox{\hyperlink{_tree_data_8h}{Tree\+Data.\+h}}\item 
+analiza\+Energetyczna/\mbox{\hyperlink{_tree_data_8cpp}{Tree\+Data.\+cpp}}\end{DoxyCompactItemize}

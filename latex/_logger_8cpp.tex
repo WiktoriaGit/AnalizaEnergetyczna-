@@ -1,0 +1,29 @@
+\doxysection{analiza\+Energetyczna/\+Logger.cpp File Reference}
+\hypertarget{_logger_8cpp}{}\label{_logger_8cpp}\index{analizaEnergetyczna/Logger.cpp@{analizaEnergetyczna/Logger.cpp}}
+
+
+Implementacja klasy \doxylink{class_logger}{Logger} do obs³ugi logowania komunikatów.  
+
+
+{\ttfamily \#include "{}Logger.\+h"{}}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_logger_8cpp_a58509006ed5b9de0d17bbba8ab8b633f}\label{_logger_8cpp_a58509006ed5b9de0d17bbba8ab8b633f} 
+\mbox{\hyperlink{class_logger}{Logger}} {\bfseries logger} ("{}log"{})
+\begin{DoxyCompactList}\small\item\em Globalny logger dla standardowych komunikatów. \end{DoxyCompactList}\item 
+\Hypertarget{_logger_8cpp_a9edb8974fc227a047d49dd7177135ef3}\label{_logger_8cpp_a9edb8974fc227a047d49dd7177135ef3} 
+\mbox{\hyperlink{class_logger}{Logger}} {\bfseries logger\+Error} ("{}log\+\_\+error"{})
+\begin{DoxyCompactList}\small\item\em Globalny logger dla komunikatów b³êdów. \end{DoxyCompactList}\item 
+\Hypertarget{_logger_8cpp_ab9c78cb2529d0d6b0ec8bf55345f984f}\label{_logger_8cpp_ab9c78cb2529d0d6b0ec8bf55345f984f} 
+int {\bfseries logger\+Error\+Count} = 0
+\begin{DoxyCompactList}\small\item\em Licznik wyst¹pieñ b³êdów logowanych przez logger\+Error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementacja klasy \doxylink{class_logger}{Logger} do obs³ugi logowania komunikatów. 
+

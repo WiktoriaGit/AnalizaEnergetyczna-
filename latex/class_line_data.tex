@@ -1,0 +1,208 @@
+\doxysection{Line\+Data Class Reference}
+\hypertarget{class_line_data}{}\label{class_line_data}\index{LineData@{LineData}}
+
+
+Klasa reprezentuj¹ca dane jednego wiersza z pliku CSV.  
+
+
+
+
+{\ttfamily \#include $<$Line\+Data.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_line_data_a408b3cf582b8bd744b6fbd3f96bb33f6}{Line\+Data}} (const string \&line)
+\begin{DoxyCompactList}\small\item\em Konstruktor przetwarzaj¹cy wiersz danych z formatu CSV. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_line_data_a58d1898841de283c4cf0841a3467b612}{Line\+Data}} (ifstream \&in)
+\begin{DoxyCompactList}\small\item\em Konstruktor odczytuj¹cy dane z pliku binarnego. \end{DoxyCompactList}\item 
+\Hypertarget{class_line_data_a4f2bcdd123eb79fe5320d712e90ea438}\label{class_line_data_a4f2bcdd123eb79fe5320d712e90ea438} 
+void {\bfseries print} () const
+\begin{DoxyCompactList}\small\item\em Wypisuje wszystkie dane na standardowe wyjœcie. \end{DoxyCompactList}\item 
+\Hypertarget{class_line_data_aa1d4ed6d82e6dfff48dca18eecb2aae4}\label{class_line_data_aa1d4ed6d82e6dfff48dca18eecb2aae4} 
+void {\bfseries print\+Data} () const
+\begin{DoxyCompactList}\small\item\em Wypisuje tylko dane liczbowe (bez daty) na standardowe wyjœcie. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_line_data_a1a6aa676d5bd18884c63724be6a34586}{print\+String}} ()
+\begin{DoxyCompactList}\small\item\em Zwraca dane jako ci¹g znaków. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_line_data_a5c410d5a45f31ed5887d84a100787bf5}{serialize}} (ofstream \&out) const
+\begin{DoxyCompactList}\small\item\em Serializuje obiekt do pliku binarnego. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_line_data_ae5e3b7bad554383a95914263378c56b6}{deserialize}} (ifstream \&in)
+\begin{DoxyCompactList}\small\item\em Deserializuje obiekt z pliku binarnego. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_line_data_a72d49d341fa9afe4d3e6b792068a6f0b}{get\+Date}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca datê. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_line_data_a6c5a9a0e0af68904bda2c5d9cebc1083}{get\+Autokonsumpcja}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca wartoœæ autokonsumpcji. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_line_data_a9274cd9aa774d5d669dc9a271d494b37}{get\+Eksport}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca wartoœæ eksportu. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_line_data_ac4b9318b542eeeb5f69f18f0c10169b9}{get\+Import}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca wartoœæ importu. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_line_data_af2a453081f7b8d3bd9c06511234ce424}{get\+Pobor}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca wartoœæ poboru. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_line_data_aed686d39142faec382ff624fea1d56ee}{get\+Produkcja}} () const
+\begin{DoxyCompactList}\small\item\em Zwraca wartoœæ produkcji. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa reprezentuj¹ca dane jednego wiersza z pliku CSV. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_line_data_a408b3cf582b8bd744b6fbd3f96bb33f6}\index{LineData@{LineData}!LineData@{LineData}}
+\index{LineData@{LineData}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{LineData()}{LineData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_line_data_a408b3cf582b8bd744b6fbd3f96bb33f6} 
+Line\+Data\+::\+Line\+Data (\begin{DoxyParamCaption}\item[{const string \&}]{line}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor przetwarzaj¹cy wiersz danych z formatu CSV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & Wiersz danych wejœciowych. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_line_data_a58d1898841de283c4cf0841a3467b612}\index{LineData@{LineData}!LineData@{LineData}}
+\index{LineData@{LineData}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{LineData()}{LineData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_line_data_a58d1898841de283c4cf0841a3467b612} 
+Line\+Data\+::\+Line\+Data (\begin{DoxyParamCaption}\item[{ifstream \&}]{in}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor odczytuj¹cy dane z pliku binarnego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & Strumieñ wejœciowy. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_line_data_ae5e3b7bad554383a95914263378c56b6}\index{LineData@{LineData}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily \label{class_line_data_ae5e3b7bad554383a95914263378c56b6} 
+void Line\+Data\+::deserialize (\begin{DoxyParamCaption}\item[{ifstream \&}]{in}{}\end{DoxyParamCaption})}
+
+
+
+Deserializuje obiekt z pliku binarnego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & Strumieñ wejœciowy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_line_data_a6c5a9a0e0af68904bda2c5d9cebc1083}\index{LineData@{LineData}!getAutokonsumpcja@{getAutokonsumpcja}}
+\index{getAutokonsumpcja@{getAutokonsumpcja}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{getAutokonsumpcja()}{getAutokonsumpcja()}}
+{\footnotesize\ttfamily \label{class_line_data_a6c5a9a0e0af68904bda2c5d9cebc1083} 
+float Line\+Data\+::get\+Autokonsumpcja (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zwraca wartoœæ autokonsumpcji. 
+
+\begin{DoxyReturn}{Returns}
+Autokonsumpcja jako liczba zmiennoprzecinkowa. 
+\end{DoxyReturn}
+\Hypertarget{class_line_data_a72d49d341fa9afe4d3e6b792068a6f0b}\index{LineData@{LineData}!getDate@{getDate}}
+\index{getDate@{getDate}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{getDate()}{getDate()}}
+{\footnotesize\ttfamily \label{class_line_data_a72d49d341fa9afe4d3e6b792068a6f0b} 
+string Line\+Data\+::get\+Date (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zwraca datê. 
+
+\begin{DoxyReturn}{Returns}
+Data w formacie tekstowym. 
+\end{DoxyReturn}
+\Hypertarget{class_line_data_a9274cd9aa774d5d669dc9a271d494b37}\index{LineData@{LineData}!getEksport@{getEksport}}
+\index{getEksport@{getEksport}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{getEksport()}{getEksport()}}
+{\footnotesize\ttfamily \label{class_line_data_a9274cd9aa774d5d669dc9a271d494b37} 
+float Line\+Data\+::get\+Eksport (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zwraca wartoœæ eksportu. 
+
+\begin{DoxyReturn}{Returns}
+Eksport jako liczba zmiennoprzecinkowa. 
+\end{DoxyReturn}
+\Hypertarget{class_line_data_ac4b9318b542eeeb5f69f18f0c10169b9}\index{LineData@{LineData}!getImport@{getImport}}
+\index{getImport@{getImport}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{getImport()}{getImport()}}
+{\footnotesize\ttfamily \label{class_line_data_ac4b9318b542eeeb5f69f18f0c10169b9} 
+float Line\+Data\+::get\+Import (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zwraca wartoœæ importu. 
+
+\begin{DoxyReturn}{Returns}
+Import jako liczba zmiennoprzecinkowa. 
+\end{DoxyReturn}
+\Hypertarget{class_line_data_af2a453081f7b8d3bd9c06511234ce424}\index{LineData@{LineData}!getPobor@{getPobor}}
+\index{getPobor@{getPobor}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{getPobor()}{getPobor()}}
+{\footnotesize\ttfamily \label{class_line_data_af2a453081f7b8d3bd9c06511234ce424} 
+float Line\+Data\+::get\+Pobor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zwraca wartoœæ poboru. 
+
+\begin{DoxyReturn}{Returns}
+Pobór jako liczba zmiennoprzecinkowa. 
+\end{DoxyReturn}
+\Hypertarget{class_line_data_aed686d39142faec382ff624fea1d56ee}\index{LineData@{LineData}!getProdukcja@{getProdukcja}}
+\index{getProdukcja@{getProdukcja}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{getProdukcja()}{getProdukcja()}}
+{\footnotesize\ttfamily \label{class_line_data_aed686d39142faec382ff624fea1d56ee} 
+float Line\+Data\+::get\+Produkcja (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zwraca wartoœæ produkcji. 
+
+\begin{DoxyReturn}{Returns}
+Produkcja jako liczba zmiennoprzecinkowa. 
+\end{DoxyReturn}
+\Hypertarget{class_line_data_a1a6aa676d5bd18884c63724be6a34586}\index{LineData@{LineData}!printString@{printString}}
+\index{printString@{printString}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{printString()}{printString()}}
+{\footnotesize\ttfamily \label{class_line_data_a1a6aa676d5bd18884c63724be6a34586} 
+string Line\+Data\+::print\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Zwraca dane jako ci¹g znaków. 
+
+\begin{DoxyReturn}{Returns}
+Dane w formacie tekstowym. 
+\end{DoxyReturn}
+\Hypertarget{class_line_data_a5c410d5a45f31ed5887d84a100787bf5}\index{LineData@{LineData}!serialize@{serialize}}
+\index{serialize@{serialize}!LineData@{LineData}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily \label{class_line_data_a5c410d5a45f31ed5887d84a100787bf5} 
+void Line\+Data\+::serialize (\begin{DoxyParamCaption}\item[{ofstream \&}]{out}{}\end{DoxyParamCaption}) const}
+
+
+
+Serializuje obiekt do pliku binarnego. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Strumieñ wyjœciowy. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+analiza\+Energetyczna/\mbox{\hyperlink{_line_data_8h}{Line\+Data.\+h}}\item 
+analiza\+Energetyczna/\mbox{\hyperlink{_line_data_8cpp}{Line\+Data.\+cpp}}\end{DoxyCompactItemize}
