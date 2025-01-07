@@ -99,3 +99,50 @@ std::vector<LineData> TreeData::getDataBetweenDates(const std::string& startDate
 
     return result;
 }
+
+void TreeData::calculateSumsBetweenDates(const std::string& startDate, const std::string& endDate, float& autokonsumpcjaSum, float& eksportSum, float& importSum, float& poborSum, float& produkcjaSum) const {
+    autokonsumpcjaSum = 0.0f;
+    eksportSum = 0.0f;
+    importSum = 0.0f;
+    poborSum = 0.0f;
+    produkcjaSum = 0.0f;
+
+    // Convert startDate and endDate to time_t
+    std::tm tm = {};
+    std::istringstream ss(startDate);
+    ss >> std::get_time(&tm, "%d.%m.%Y %H:%M");
+    time_t start = mktime(&tm);
+
+    ss.clear();
+    ss.str(endDate);
+    ss >> std::get_time(&tm, "%d.%m.%Y %H:%M");
+    time_t end = mktime(&tm);
+
+    for (const auto& yearPair : years) {
+        const YearNode& yearNode = yearPair.second;
+        for (const auto& monthPair : yearNode.months) {
+            const MonthNode& monthNode = monthPair.second;
+            for (const auto& dayPair : monthNode.days) {
+                const DayNode& dayNode = dayPair.second;
+                for (const auto& quarterPair : dayNode.quarters) {
+                    const QuarterNode& quarterNode = quarterPair.second;
+                    for (const auto& lineData : quarterNode.data) {
+                        // Convert lineData.date to time_t
+                        std::tm tm = {};
+                        std::istringstream ss(lineData.getDate());
+                        ss >> std::get_time(&tm, "%d.%m.%Y %H:%M");
+                        time_t dataTime = mktime(&tm);
+
+                        if (dataTime >= start && dataTime <= end) {
+							autokonsumpcjaSum += lineData.getAutokonsumpcja();
+							eksportSum += lineData.getEksport();
+                            importSum += lineData.getImport();
+                            poborSum += lineData.getPobor();
+                            produkcjaSum += lineData.getProdukcja();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

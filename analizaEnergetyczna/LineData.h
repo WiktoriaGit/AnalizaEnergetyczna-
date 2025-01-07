@@ -28,6 +28,16 @@ public:
 
 	string getDate() const { return date; }
 
+	float getAutokonsumpcja() const { return autokonsumpcja; }
+
+	float getEksport() const { return eksport; }
+
+	float getImport() const { return import; }
+
+	float getPobor() const { return pobor; }
+
+	float getProdukcja() const { return produkcja; }
+
 private:
     // Time,Autokonsumpcja (W),Eksport (W),Import (W),Pobór (W),Produkcja (W)
     string date;

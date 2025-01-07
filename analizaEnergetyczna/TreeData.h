@@ -33,6 +33,7 @@ public:
     void addData(const LineData& lineData);
     void print() const;
     std::vector<LineData> getDataBetweenDates(const std::string& startDate, const std::string& endDate) const;
+    void calculateSumsBetweenDates(const std::string& startDate, const std::string& endDate, float& autokonsumpcjaSum, float& eksportSum, float& importSum, float& poborSum, float& produkcjaSum) const;
 
 private:
     std::map<int, YearNode> years;

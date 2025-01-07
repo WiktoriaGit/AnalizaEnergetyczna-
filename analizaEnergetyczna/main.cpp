@@ -76,8 +76,8 @@ int main()
     //treeData.print();
 
     // Get data between dates
-    string startDate = "15.10.2021 11:00";
-    string endDate = "15.10.2021 18:45";
+    string startDate = "01.10.2020 00:00";
+    string endDate = "01.10.2020 09:00";
     vector<LineData> filteredData = treeData.getDataBetweenDates(startDate, endDate);
 
     cout << "Data between " << startDate << " and " << endDate << ":" << endl;
@@ -85,7 +85,16 @@ int main()
         ld.print();
     }
 
+    // Calculate sums between dates
+    float autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum;
+    treeData.calculateSumsBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
 
+    cout << "Sums between " << startDate << " and " << endDate << ":" << endl;
+    cout << "Autokonsumpcja: " << autokonsumpcjaSum << endl;
+    cout << "Eksport: " << eksportSum << endl;
+    cout << "Import: " << importSum << endl;
+    cout << "Pobor: " << poborSum << endl;
+    cout << "Produkcja: " << produkcjaSum << endl;
 
 
     // Export data to binary file
