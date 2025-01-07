@@ -1,3 +1,6 @@
+/// \file LineData.h
+/// \brief Deklaracja klasy LineData do przechowywania i przetwarzania danych wierszy z pliku CSV.
+
 #ifndef LINEDATA_H
 #define LINEDATA_H
 
@@ -9,48 +12,67 @@
 
 using namespace std;
 
+/// \class LineData
+/// \brief Klasa reprezentuj¹ca dane jednego wiersza z pliku CSV.
 class LineData {
 public:
-
+    /// \brief Konstruktor przetwarzaj¹cy wiersz danych z formatu CSV.
+    /// \param line Wiersz danych wejœciowych.
     LineData(const string& line);
 
-	LineData(ifstream& in);
+    /// \brief Konstruktor odczytuj¹cy dane z pliku binarnego.
+    /// \param in Strumieñ wejœciowy.
+    LineData(ifstream& in);
 
+    /// \brief Wypisuje wszystkie dane na standardowe wyjœcie.
     void print() const;
 
-	void printData() const;
-	
-	string printString();
+    /// \brief Wypisuje tylko dane liczbowe (bez daty) na standardowe wyjœcie.
+    void printData() const;
 
-	void serialize(ofstream& out) const;
+    /// \brief Zwraca dane jako ci¹g znaków.
+    /// \return Dane w formacie tekstowym.
+    string printString();
 
-	void deserialize(ifstream& in);
+    /// \brief Serializuje obiekt do pliku binarnego.
+    /// \param out Strumieñ wyjœciowy.
+    void serialize(ofstream& out) const;
 
-	string getDate() const { return date; }
+    /// \brief Deserializuje obiekt z pliku binarnego.
+    /// \param in Strumieñ wejœciowy.
+    void deserialize(ifstream& in);
 
-	float getAutokonsumpcja() const { return autokonsumpcja; }
+    /// \brief Zwraca datê.
+    /// \return Data w formacie tekstowym.
+    string getDate() const { return date; }
 
-	float getEksport() const { return eksport; }
+    /// \brief Zwraca wartoœæ autokonsumpcji.
+    /// \return Autokonsumpcja jako liczba zmiennoprzecinkowa.
+    float getAutokonsumpcja() const { return autokonsumpcja; }
 
-	float getImport() const { return import; }
+    /// \brief Zwraca wartoœæ eksportu.
+    /// \return Eksport jako liczba zmiennoprzecinkowa.
+    float getEksport() const { return eksport; }
 
-	float getPobor() const { return pobor; }
+    /// \brief Zwraca wartoœæ importu.
+    /// \return Import jako liczba zmiennoprzecinkowa.
+    float getImport() const { return import; }
 
-	float getProdukcja() const { return produkcja; }
+    /// \brief Zwraca wartoœæ poboru.
+    /// \return Pobór jako liczba zmiennoprzecinkowa.
+    float getPobor() const { return pobor; }
+
+    /// \brief Zwraca wartoœæ produkcji.
+    /// \return Produkcja jako liczba zmiennoprzecinkowa.
+    float getProdukcja() const { return produkcja; }
 
 private:
-    // Time,Autokonsumpcja (W),Eksport (W),Import (W),Pobór (W),Produkcja (W)
-    string date;
-
-	float autokonsumpcja;
-
-	float eksport;
-
-	float import;
-
-	float pobor;
-
-	float produkcja;
+    string date; ///< Data wiersza.
+    float autokonsumpcja; ///< Autokonsumpcja w W.
+    float eksport; ///< Eksport w W.
+    float import; ///< Import w W.
+    float pobor; ///< Pobór w W.
+    float produkcja; ///< Produkcja w W.
 };
 
 #endif // LINEDATA_H
