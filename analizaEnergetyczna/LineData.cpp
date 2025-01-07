@@ -1,3 +1,6 @@
+/// \file LineData.cpp
+/// \brief Implementacja klasy LineData do obs³ugi danych wierszy z pliku CSV.
+
 #include "LineData.h"
 #include "Logger.h"
 #include <algorithm>
@@ -6,54 +9,53 @@
 
 using namespace std;
 
+/// \brief Konstruktor przetwarzaj¹cy wiersz danych z formatu CSV.
+/// \param line Wiersz danych wejœciowych.
 LineData::LineData(const string& line) {
-
     vector<string> values;
     stringstream ss(line);
     string value;
 
-    while (getline(ss, value, ','))
-    {
-        // Remove double quotes from the value
+    while (getline(ss, value, ',')) {
         value.erase(remove(value.begin(), value.end(), '\"'), value.end());
         values.push_back(value);
     }
 
     this->date = values[0];
-
     this->autokonsumpcja = stof(values[1]);
     this->eksport = stof(values[2]);
     this->import = stof(values[3]);
     this->pobor = stof(values[4]);
     this->produkcja = stof(values[5]);
 
-	logger.log("Wczytano linie: " + this->printString());
-
-    //this->print();
+    logger.log("Wczytano linie: " + this->printString());
 }
 
+/// \brief Konstruktor odczytuj¹cy dane z pliku binarnego.
+/// \param in Strumieñ wejœciowy.
 LineData::LineData(ifstream& in) {
     deserialize(in);
 }
 
-// prints all data
-void LineData::print() const
-{
+/// \brief Wypisuje wszystkie dane na standardowe wyjœcie.
+void LineData::print() const {
     cout << date << " " << autokonsumpcja << " " << eksport << " " << import << " " << pobor << " " << produkcja << endl;
 }
 
-// prints only data without date
-void LineData::printData() const
-{
-	cout << "\t\t\t\t" << autokonsumpcja << " " << eksport << " " << import << " " << pobor << " " << produkcja << endl;
+/// \brief Wypisuje tylko dane liczbowe (bez daty) na standardowe wyjœcie.
+void LineData::printData() const {
+    cout << "\t\t\t\t" << autokonsumpcja << " " << eksport << " " << import << " " << pobor << " " << produkcja << endl;
 }
 
-// prints all data as string
-string LineData::printString()
-{
-    return date + " " + to_string(autokonsumpcja) + " " + to_string(eksport) + " " + to_string(import) + " " + to_string(pobor) + " " + to_string(produkcja);
+/// \brief Zwraca dane jako ci¹g znaków.
+/// \return Dane w formacie tekstowym.
+string LineData::printString() {
+    return date + " " + to_string(autokonsumpcja) + " " + to_string(eksport) + " " + to_string(import) + " " +
+        to_string(pobor) + " " + to_string(produkcja);
 }
 
+/// \brief Serializuje obiekt do pliku binarnego.
+/// \param out Strumieñ wyjœciowy.
 void LineData::serialize(ofstream& out) const {
     size_t dateSize = date.size();
     out.write(reinterpret_cast<const char*>(&dateSize), sizeof(dateSize));
@@ -65,6 +67,8 @@ void LineData::serialize(ofstream& out) const {
     out.write(reinterpret_cast<const char*>(&produkcja), sizeof(produkcja));
 }
 
+/// \brief Deserializuje obiekt z pliku binarnego.
+/// \param in Strumieñ wejœciowy.
 void LineData::deserialize(ifstream& in) {
     size_t dateSize;
     in.read(reinterpret_cast<char*>(&dateSize), sizeof(dateSize));
