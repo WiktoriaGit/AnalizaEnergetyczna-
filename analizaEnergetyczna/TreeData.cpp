@@ -146,3 +146,33 @@ void TreeData::calculateSumsBetweenDates(const std::string& startDate, const std
         }
     }
 }
+
+void TreeData::calculateAveragesBetweenDates(const std::string& startDate, const std::string& endDate, float& autokonsumpcjaAvg, float& eksportAvg, float& importAvg, float& poborAvg, float& produkcjaAvg) const {
+    float autokonsumpcjaSum = 0.0f, eksportSum = 0.0f, importSum = 0.0f, poborSum = 0.0f, produkcjaSum = 0.0f;
+    int count = 0;
+
+    std::vector<LineData> data = getDataBetweenDates(startDate, endDate);
+    for (const auto& lineData : data) {
+        autokonsumpcjaSum += lineData.getAutokonsumpcja();
+        eksportSum += lineData.getEksport();
+        importSum += lineData.getImport();
+        poborSum += lineData.getPobor();
+        produkcjaSum += lineData.getProdukcja();
+        count++;
+    }
+
+    if (count > 0) {
+        autokonsumpcjaAvg = autokonsumpcjaSum / count;
+        eksportAvg = eksportSum / count;
+        importAvg = importSum / count;
+        poborAvg = poborSum / count;
+        produkcjaAvg = produkcjaSum / count;
+    }
+    else {
+        autokonsumpcjaAvg = 0.0f;
+        eksportAvg = 0.0f;
+        importAvg = 0.0f;
+        poborAvg = 0.0f;
+        produkcjaAvg = 0.0f;
+    }
+}

@@ -88,8 +88,17 @@ int main()
     // Calculate sums between dates
     float autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum;
     treeData.calculateSumsBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
-
+	
     cout << "Sums between " << startDate << " and " << endDate << ":" << endl;
+    cout << "Autokonsumpcja: " << autokonsumpcjaSum << endl;
+    cout << "Eksport: " << eksportSum << endl;
+    cout << "Import: " << importSum << endl;
+    cout << "Pobor: " << poborSum << endl;
+    cout << "Produkcja: " << produkcjaSum << endl;
+
+    treeData.calculateAveragesBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
+
+    cout << "Average between " << startDate << " and " << endDate << ":" << endl;
     cout << "Autokonsumpcja: " << autokonsumpcjaSum << endl;
     cout << "Eksport: " << eksportSum << endl;
     cout << "Import: " << importSum << endl;
