@@ -77,6 +77,7 @@ int main()
         displayMenu();
         int choice;
         cin >> choice;
+        cin.ignore(); // Ignore the newline character left in the buffer
 
         switch (choice) {
         case 1:
@@ -107,9 +108,9 @@ int main()
 
         case 3:
             cout << "Enter start date (dd.mm.yyyy hh:mm): ";
-            cin >> startDate;
+            getline(cin, startDate);
             cout << "Enter end date (dd.mm.yyyy hh:mm): ";
-            cin >> endDate;
+            getline(cin, endDate);
             filteredData = treeData.getDataBetweenDates(startDate, endDate);
             cout << "Data between " << startDate << " and " << endDate << ":" << endl;
             for (const auto& ld : filteredData) {
@@ -119,9 +120,9 @@ int main()
 
         case 4:
             cout << "Enter start date (dd.mm.yyyy hh:mm): ";
-            cin >> startDate;
+            getline(cin, startDate);
             cout << "Enter end date (dd.mm.yyyy hh:mm): ";
-            cin >> endDate;
+            getline(cin, endDate);
             treeData.calculateSumsBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
             cout << "Sums between " << startDate << " and " << endDate << ":" << endl;
             cout << "Autokonsumpcja: " << autokonsumpcjaSum << endl;
@@ -133,9 +134,9 @@ int main()
 
         case 5:
             cout << "Enter start date (dd.mm.yyyy hh:mm): ";
-            cin >> startDate;
+            getline(cin, startDate);
             cout << "Enter end date (dd.mm.yyyy hh:mm): ";
-            cin >> endDate;
+            getline(cin, endDate);
             treeData.calculateAveragesBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
             cout << "Averages between " << startDate << " and " << endDate << ":" << endl;
             cout << "Autokonsumpcja: " << autokonsumpcjaSum << endl;
@@ -147,13 +148,13 @@ int main()
 
         case 6:
             cout << "Enter first start date (dd.mm.yyyy hh:mm): ";
-            cin >> startDate1;
+            getline(cin, startDate1);
             cout << "Enter first end date (dd.mm.yyyy hh:mm): ";
-            cin >> endDate1;
+            getline(cin, endDate1);
             cout << "Enter second start date (dd.mm.yyyy hh:mm): ";
-            cin >> startDate2;
+            getline(cin, startDate2);
             cout << "Enter second end date (dd.mm.yyyy hh:mm): ";
-            cin >> endDate2;
+            getline(cin, endDate2);
             treeData.compareDataBetweenDates(startDate1, endDate1, startDate2, endDate2, autokonsumpcjaDiff, eksportDiff, importDiff, poborDiff, produkcjaDiff);
             cout << "Differences between " << startDate1 << " - " << endDate1 << " and " << startDate2 << " - " << endDate2 << ":" << endl;
             cout << "Autokonsumpcja: " << autokonsumpcjaDiff << endl;
@@ -165,9 +166,9 @@ int main()
 
         case 7:
             cout << "Enter start date (dd.mm.yyyy hh:mm): ";
-            cin >> startDate;
+            getline(cin, startDate);
             cout << "Enter end date (dd.mm.yyyy hh:mm): ";
-            cin >> endDate;
+            getline(cin, endDate);
             cout << "Enter search value: ";
             cin >> searchValue;
             cout << "Enter tolerance: ";
@@ -193,6 +194,7 @@ int main()
             }
 
             binaryFile.close();
+            cout << "Data saved to binary file successfully." << endl;
         }
         break;
 
@@ -212,6 +214,7 @@ int main()
             }
 
             binaryFileIn.close();
+            cout << "Data loaded from binary file successfully." << endl;
 
             //Print imported data
             //for (const auto& ld : importedData) {
