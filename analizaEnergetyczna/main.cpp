@@ -100,6 +100,10 @@ int main()
 
             file.close();
             cout << "Data loaded successfully." << endl;
+
+            cout << "Loaded " << data.size() << " lines" << endl;
+            cout << "Found " << loggerErrorCount << " faulty lines" << endl;
+            cout << "Check log and log_error files for more details" << endl;
             break;
 
         case 2:
