@@ -2,41 +2,40 @@
 #define LINEVALIDATION_H
 
 #include <string>
+#include <cctype>
+#include <algorithm>
 #include "Logger.h"
 
-bool lineValidation(const string& line)
+bool lineValidation(const std::string& line)
 {
-	if (line.empty())
-	{
-		// Log empty line
-		loggerError.log("Pusta linia");
-		return false;
-	}
-	else if (line.find("Time") != string::npos)
-	{
-		// Log header line
-		loggerError.log("Znaleziono naglowek: " + line);
-		return false;
-	}
-	else if ((line.find("X") != string::npos) ||
-		(line.find("y") != string::npos) ||
-		(line.find("Y") != string::npos) ||
-		(line.find("x") != string::npos))
-	{
-		// Log other data
-		loggerError.log("Znaleziono inne dane: " + line);
-		return false;
-	}
-	else if (count(line.begin(), line.end(), ',') != 5)
-	{
-		// Log invalid number of parameters
-		loggerError.log("Nieprawidlowa liczba parametrow: " + line);
-		return false;
-	}
-	else
-	{
-		return true;
-	}
+    if (line.empty())
+    {
+        // Log empty line
+        loggerError.log("Pusta linia");
+        return false;
+    }
+    else if (line.find("Time") != std::string::npos)
+    {
+        // Log header line
+        loggerError.log("Znaleziono naglowek: " + line);
+        return false;
+    }
+    else if (std::any_of(line.begin(), line.end(), [](char c) { return std::isalpha(c); }))
+    {
+        // Log other data
+        loggerError.log("Znaleziono inne dane: " + line);
+        return false;
+    }
+    else if (std::count(line.begin(), line.end(), ',') != 5)
+    {
+        // Log invalid number of parameters
+        loggerError.log("Nieprawidlowa liczba parametrow: " + line);
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 
 #endif // LINEVALIDATION_H
