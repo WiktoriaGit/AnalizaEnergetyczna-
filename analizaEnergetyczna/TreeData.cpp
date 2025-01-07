@@ -176,3 +176,17 @@ void TreeData::calculateAveragesBetweenDates(const std::string& startDate, const
         produkcjaAvg = 0.0f;
     }
 }
+
+void TreeData::compareDataBetweenDates(const std::string& startDate1, const std::string& endDate1, const std::string& startDate2, const std::string& endDate2, float& autokonsumpcjaDiff, float& eksportDiff, float& importDiff, float& poborDiff, float& produkcjaDiff) const {
+    float autokonsumpcjaSum1 = 0.0f, eksportSum1 = 0.0f, importSum1 = 0.0f, poborSum1 = 0.0f, produkcjaSum1 = 0.0f;
+    float autokonsumpcjaSum2 = 0.0f, eksportSum2 = 0.0f, importSum2 = 0.0f, poborSum2 = 0.0f, produkcjaSum2 = 0.0f;
+
+    calculateSumsBetweenDates(startDate1, endDate1, autokonsumpcjaSum1, eksportSum1, importSum1, poborSum1, produkcjaSum1);
+    calculateSumsBetweenDates(startDate2, endDate2, autokonsumpcjaSum2, eksportSum2, importSum2, poborSum2, produkcjaSum2);
+
+    autokonsumpcjaDiff = autokonsumpcjaSum1 - autokonsumpcjaSum2;
+    eksportDiff = eksportSum1 - eksportSum2;
+    importDiff = importSum1 - importSum2;
+    poborDiff = poborSum1 - poborSum2;
+    produkcjaDiff = produkcjaSum1 - produkcjaSum2;
+}

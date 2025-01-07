@@ -105,6 +105,20 @@ int main()
     cout << "Pobor: " << poborSum << endl;
     cout << "Produkcja: " << produkcjaSum << endl;
 
+    string startDate1 = "01.10.2020 00:00";
+    string endDate1 = "01.10.2020 09:00";
+    string startDate2 = "02.10.2020 00:00";
+    string endDate2 = "02.10.2020 09:00";
+
+    float autokonsumpcjaDiff, eksportDiff, importDiff, poborDiff, produkcjaDiff;
+    treeData.compareDataBetweenDates(startDate1, endDate1, startDate2, endDate2, autokonsumpcjaDiff, eksportDiff, importDiff, poborDiff, produkcjaDiff);
+    cout << "Differences between " << startDate1 << " - " << endDate1 << " and " << startDate2 << " - " << endDate2 << ":" << endl;
+    cout << "Autokonsumpcja: " << autokonsumpcjaDiff << endl;
+    cout << "Eksport: " << eksportDiff << endl;
+    cout << "Import: " << importDiff << endl;
+    cout << "Pobor: " << poborDiff << endl;
+    cout << "Produkcja: " << produkcjaDiff << endl;
+
 
     // Export data to binary file
     //ofstream binaryFile("data.bin", ios::binary);
