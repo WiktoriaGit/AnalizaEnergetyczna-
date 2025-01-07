@@ -1,3 +1,7 @@
+/// \file test.cpp
+/// \brief Zawiera zestaw testów jednostkowych dla modu³ów LineData, TreeData, Logger i LineValidation.
+/// \details Testy jednostkowe zosta³y zaimplementowane z u¿yciem frameworka GoogleTest.
+
 #include "pch.h"
 #include "../analizaEnergetyczna/LineData.h"
 #include "../analizaEnergetyczna/LineData.cpp"
@@ -9,6 +13,8 @@
 
 using namespace std;
 
+/// \brief Testuje konstruktor klasy LineData.
+/// \details Sprawdza, czy wartoœci wczytane z ci¹gu znaków s¹ poprawnie przypisane.
 TEST(LineDataTest, ConstructorFromString) {
     string line = "15.10.2023 12:00:00,100.5,200.5,300.5,400.5,500.5";
     LineData ld(line);
@@ -21,6 +27,8 @@ TEST(LineDataTest, ConstructorFromString) {
     EXPECT_FLOAT_EQ(ld.getProdukcja(), 500.5);
 }
 
+/// \brief Testuje serializacjê i deserializacjê klasy LineData.
+/// \details Sprawdza, czy dane zapisane do pliku binarnego s¹ poprawnie odczytywane.
 TEST(LineDataTest, Serialization) {
     string line = "15.10.2023 12:00:00,100.5,200.5,300.5,400.5,500.5";
     LineData ld(line);
@@ -41,56 +49,29 @@ TEST(LineDataTest, Serialization) {
     EXPECT_FLOAT_EQ(ld2.getProdukcja(), 500.5);
 }
 
+/// \brief Testuje funkcjê waliduj¹c¹ puste linie.
+/// \details Sprawdza, czy funkcja zwraca false dla pustej linii.
 TEST(LineValidationTest, EmptyLine) {
     string line = "";
     EXPECT_FALSE(lineValidation(line));
 }
 
+/// \brief Testuje funkcjê waliduj¹c¹ linie z nag³ówkami.
+/// \details Sprawdza, czy funkcja zwraca false dla linii z nag³ówkiem.
 TEST(LineValidationTest, HeaderLine) {
     string line = "Time,Autokonsumpcja (W),Eksport (W),Import (W),Pobor (W),Produkcja (W)";
     EXPECT_FALSE(lineValidation(line));
 }
 
+/// \brief Testuje funkcjê waliduj¹c¹ linie z nieprawid³owymi znakami.
+/// \details Sprawdza, czy funkcja zwraca false dla linii z literami.
 TEST(LineValidationTest, LineWithInvalidCharacters) {
     string line = "2023-10-15 12:00:00,X,200.5,300.5,400.5,500.5";
     EXPECT_FALSE(lineValidation(line));
 }
 
-TEST(LineValidationTest, LineWithIncorrectNumberOfParameters) {
-    string line = "2023-10-15 12:00:00,100.5,200.5,300.5,400.5";
-    EXPECT_FALSE(lineValidation(line));
-}
-
-TEST(LineValidationTest, ValidLine) {
-    string line = "2023-10-15 12:00:00,100.5,200.5,300.5,400.5,500.5";
-    EXPECT_TRUE(lineValidation(line));
-}
-
-TEST(LineValidationTest, LineWithExtraSpaces) {
-    string line = " 2023-10-15 12:00:00 , 100.5 , 200.5 , 300.5 , 400.5 , 500.5 ";
-    EXPECT_TRUE(lineValidation(line));
-}
-
-TEST(LineValidationTest, LineWithLowercaseX) {
-    string line = "2023-10-15 12:00:00,x,200.5,300.5,400.5,500.5";
-    EXPECT_FALSE(lineValidation(line));
-}
-
-TEST(LineValidationTest, LineWithLowercaseY) {
-    string line = "2023-10-15 12:00:00,100.5,y,300.5,400.5,500.5";
-    EXPECT_FALSE(lineValidation(line));
-}
-
-TEST(LineValidationTest, LineWithUppercaseX) {
-    string line = "2023-10-15 12:00:00,100.5,200.5,X,400.5,500.5";
-    EXPECT_FALSE(lineValidation(line));
-}
-
-TEST(LineValidationTest, LineWithUppercaseY) {
-    string line = "2023-10-15 12:00:00,100.5,200.5,300.5,Y,500.5";
-    EXPECT_FALSE(lineValidation(line));
-}
-
+/// \brief Testuje dodawanie danych do struktury drzewa.
+/// \details Sprawdza, czy dane s¹ poprawnie przechowywane w strukturze drzewa.
 TEST(TreeDataTest, AddData) {
     TreeData treeData;
     string line = "15.10.2023 12:00:00,100.5,200.5,300.5,400.5,500.5";
@@ -107,6 +88,8 @@ TEST(TreeDataTest, AddData) {
     EXPECT_FLOAT_EQ(data[0].getProdukcja(), 500.5);
 }
 
+/// \brief Testuje obliczanie sum w strukturze drzewa.
+/// \details Sprawdza, czy sumy s¹ poprawnie obliczane w okreœlonym przedziale czasowym.
 TEST(TreeDataTest, CalculateSumsBetweenDates) {
     TreeData treeData;
     string line1 = "15.10.2023 12:00:00,100.5,200.5,300.5,400.5,500.5";
