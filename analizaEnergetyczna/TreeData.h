@@ -8,14 +8,16 @@
 
 class TreeData {
 public:
-    struct HourNode {
+    struct QuarterNode {
+        int quarter;
         int hour;
+        int minute;
         std::vector<LineData> data;
     };
 
     struct DayNode {
         int day;
-        std::map<int, HourNode> hours;
+        std::map<int, QuarterNode> quarters;
     };
 
     struct MonthNode {
