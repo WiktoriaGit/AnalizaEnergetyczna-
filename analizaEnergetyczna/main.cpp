@@ -46,140 +46,146 @@ bool lineValidation(const string& line)
 }
 
 
+void displayMenu() {
+    cout << "Menu:" << endl;
+    cout << "1. Load data from file" << endl;
+    cout << "2. Print tree structure" << endl;
+    cout << "3. Get data between dates" << endl;
+    cout << "4. Calculate sums between dates" << endl;
+    cout << "5. Calculate averages between dates" << endl;
+    cout << "6. Compare data between dates" << endl;
+    cout << "7. Search records with tolerance" << endl;
+    cout << "8. Exit" << endl;
+    cout << "Enter your choice: ";
+}
+
 int main()
 {
-    ifstream file("Chart Export.csv");
-    if (!file.is_open())
-    {
-        cerr << "Error opening file" << endl;
-        return 1;
-    }
-
-	// Vector to store the data from the file using the LineData class
-    vector<LineData> data;
     TreeData treeData;
-    string line; 
+    vector<LineData> data;
+    string line;
+    ifstream file;
+    string startDate, endDate, startDate1, endDate1, startDate2, endDate2;
+    float autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum;
+    float autokonsumpcjaDiff, eksportDiff, importDiff, poborDiff, produkcjaDiff;
+    float searchValue, tolerance;
+    vector<LineData> filteredData, recordsWithTolerance;
 
-    while (getline(file, line))
-    {
-        if (lineValidation(line))
-        {
-            LineData ld(line);
-            data.push_back(ld);
-			treeData.addData(ld);
+    while (true) {
+        displayMenu();
+        int choice;
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            file.open("Chart Export.csv");
+            if (!file.is_open())
+            {
+                cerr << "Error opening file" << endl;
+                return 1;
+            }
+
+            while (getline(file, line))
+            {
+                if (lineValidation(line))
+                {
+                    LineData ld(line);
+                    data.push_back(ld);
+                    treeData.addData(ld);
+                }
+            }
+
+            file.close();
+            cout << "Data loaded successfully." << endl;
+            break;
+
+        case 2:
+            treeData.print();
+            break;
+
+        case 3:
+            cout << "Enter start date (dd.mm.yyyy hh:mm): ";
+            cin >> startDate;
+            cout << "Enter end date (dd.mm.yyyy hh:mm): ";
+            cin >> endDate;
+            filteredData = treeData.getDataBetweenDates(startDate, endDate);
+            cout << "Data between " << startDate << " and " << endDate << ":" << endl;
+            for (const auto& ld : filteredData) {
+                ld.print();
+            }
+            break;
+
+        case 4:
+            cout << "Enter start date (dd.mm.yyyy hh:mm): ";
+            cin >> startDate;
+            cout << "Enter end date (dd.mm.yyyy hh:mm): ";
+            cin >> endDate;
+            treeData.calculateSumsBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
+            cout << "Sums between " << startDate << " and " << endDate << ":" << endl;
+            cout << "Autokonsumpcja: " << autokonsumpcjaSum << endl;
+            cout << "Eksport: " << eksportSum << endl;
+            cout << "Import: " << importSum << endl;
+            cout << "Pobor: " << poborSum << endl;
+            cout << "Produkcja: " << produkcjaSum << endl;
+            break;
+
+        case 5:
+            cout << "Enter start date (dd.mm.yyyy hh:mm): ";
+            cin >> startDate;
+            cout << "Enter end date (dd.mm.yyyy hh:mm): ";
+            cin >> endDate;
+            treeData.calculateAveragesBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
+            cout << "Averages between " << startDate << " and " << endDate << ":" << endl;
+            cout << "Autokonsumpcja: " << autokonsumpcjaSum << endl;
+            cout << "Eksport: " << eksportSum << endl;
+            cout << "Import: " << importSum << endl;
+            cout << "Pobor: " << poborSum << endl;
+            cout << "Produkcja: " << produkcjaSum << endl;
+            break;
+
+        case 6:
+            cout << "Enter first start date (dd.mm.yyyy hh:mm): ";
+            cin >> startDate1;
+            cout << "Enter first end date (dd.mm.yyyy hh:mm): ";
+            cin >> endDate1;
+            cout << "Enter second start date (dd.mm.yyyy hh:mm): ";
+            cin >> startDate2;
+            cout << "Enter second end date (dd.mm.yyyy hh:mm): ";
+            cin >> endDate2;
+            treeData.compareDataBetweenDates(startDate1, endDate1, startDate2, endDate2, autokonsumpcjaDiff, eksportDiff, importDiff, poborDiff, produkcjaDiff);
+            cout << "Differences between " << startDate1 << " - " << endDate1 << " and " << startDate2 << " - " << endDate2 << ":" << endl;
+            cout << "Autokonsumpcja: " << autokonsumpcjaDiff << endl;
+            cout << "Eksport: " << eksportDiff << endl;
+            cout << "Import: " << importDiff << endl;
+            cout << "Pobor: " << poborDiff << endl;
+            cout << "Produkcja: " << produkcjaDiff << endl;
+            break;
+
+        case 7:
+            cout << "Enter start date (dd.mm.yyyy hh:mm): ";
+            cin >> startDate;
+            cout << "Enter end date (dd.mm.yyyy hh:mm): ";
+            cin >> endDate;
+            cout << "Enter search value: ";
+            cin >> searchValue;
+            cout << "Enter tolerance: ";
+            cin >> tolerance;
+            recordsWithTolerance = treeData.searchRecordsWithTolerance(startDate, endDate, searchValue, tolerance);
+            cout << "Records with value " << searchValue << " ± " << tolerance << " between " << startDate << " and " << endDate << ":" << endl;
+            for (const auto& ld : recordsWithTolerance) {
+                ld.print();
+            }
+            break;
+
+        case 8:
+            cout << "Exiting..." << endl;
+            return 0;
+
+        default:
+            cout << "Invalid choice. Please try again." << endl;
+            break;
         }
     }
-
-    file.close();
-
-
-    //treeData.print();
-
-    // Get data between dates
-    string startDate = "01.10.2020 00:00";
-    string endDate = "01.10.2020 09:00";
-    vector<LineData> filteredData = treeData.getDataBetweenDates(startDate, endDate);
-
-    cout << "Data between " << startDate << " and " << endDate << ":" << endl;
-    for (const auto& ld : filteredData) {
-        ld.print();
-    }
-
-    // Calculate sums between dates
-    float autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum;
-    treeData.calculateSumsBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
-	
-    cout << "Sums between " << startDate << " and " << endDate << ":" << endl;
-    cout << "Autokonsumpcja: " << autokonsumpcjaSum << endl;
-    cout << "Eksport: " << eksportSum << endl;
-    cout << "Import: " << importSum << endl;
-    cout << "Pobor: " << poborSum << endl;
-    cout << "Produkcja: " << produkcjaSum << endl;
-
-	// claculate averages between dates
-    treeData.calculateAveragesBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
-
-    cout << "Average between " << startDate << " and " << endDate << ":" << endl;
-    cout << "Autokonsumpcja: " << autokonsumpcjaSum << endl;
-    cout << "Eksport: " << eksportSum << endl;
-    cout << "Import: " << importSum << endl;
-    cout << "Pobor: " << poborSum << endl;
-    cout << "Produkcja: " << produkcjaSum << endl;
-
-    string startDate1 = "01.10.2020 00:00";
-    string endDate1 = "01.10.2020 09:00";
-    string startDate2 = "02.10.2020 00:00";
-    string endDate2 = "02.10.2020 09:00";
-
-
-	// compare data between dates
-    float autokonsumpcjaDiff, eksportDiff, importDiff, poborDiff, produkcjaDiff;
-    treeData.compareDataBetweenDates(startDate1, endDate1, startDate2, endDate2, autokonsumpcjaDiff, eksportDiff, importDiff, poborDiff, produkcjaDiff);
-    cout << "Differences between " << startDate1 << " - " << endDate1 << " and " << startDate2 << " - " << endDate2 << ":" << endl;
-    cout << "Autokonsumpcja: " << autokonsumpcjaDiff << endl;
-    cout << "Eksport: " << eksportDiff << endl;
-    cout << "Import: " << importDiff << endl;
-    cout << "Pobor: " << poborDiff << endl;
-    cout << "Produkcja: " << produkcjaDiff << endl;
-
-
-    // Search records with tolerance
-    float searchValue = 449.2026;
-    float tolerance = 0.01f;
-
-    vector<LineData> recordsWithTolerance = treeData.searchRecordsWithTolerance(startDate, endDate, searchValue, tolerance);
-
-    cout << "Records with value " << searchValue << " ± " << tolerance << " between " << startDate << " and " << endDate << ":" << endl;
-    for (const auto& ld : recordsWithTolerance) {
-        ld.print();
-    }
-
-
-
-    // Export data to binary file
-    //ofstream binaryFile("data.bin", ios::binary);
-    //if (!binaryFile.is_open()) {
-    //    cerr << "Error opening binary file" << endl;
-    //    return 1;
-    //}
-
-    //for (const auto& ld : data) {
-    //    ld.serialize(binaryFile);
-    //}
-
-
-    //binaryFile.close();
-
-    //// Import data from binary file
-    //ifstream binaryFileIn("data.bin", ios::binary);
-    //if (!binaryFileIn.is_open()) {
-    //    cerr << "Error opening binary file for reading" << endl;
-    //    return 1;
-    //}
-
-    //vector<LineData> importedData;
-    //while (binaryFileIn.peek() != EOF) {
-    //    LineData ld(binaryFileIn);
-    //    importedData.push_back(ld);
-    //}
-
-    //binaryFileIn.close();
-
-    //// Print imported data
-    ////for (const auto& ld : importedData) {
-    ////    ld.print();
-    ////}
-
-
-
-
-
-
-
-
-
-	cout << "Wczytano " << data.size() << " linii" << endl;
-	cout << "Znaleziono " << loggerErrorCount << " bledow" << endl;
 
     return 0;
 }
