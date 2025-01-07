@@ -190,3 +190,20 @@ void TreeData::compareDataBetweenDates(const std::string& startDate1, const std:
     poborDiff = poborSum1 - poborSum2;
     produkcjaDiff = produkcjaSum1 - produkcjaSum2;
 }
+
+std::vector<LineData> TreeData::searchRecordsWithTolerance(const std::string& startDate, const std::string& endDate, float value, float tolerance) const {
+    std::vector<LineData> result;
+    std::vector<LineData> data = getDataBetweenDates(startDate, endDate);
+
+    for (const auto& lineData : data) {
+        if (std::fabs(lineData.getAutokonsumpcja() - value) <= tolerance ||
+            std::fabs(lineData.getEksport() - value) <= tolerance ||
+            std::fabs(lineData.getImport() - value) <= tolerance ||
+            std::fabs(lineData.getPobor() - value) <= tolerance ||
+            std::fabs(lineData.getProdukcja() - value) <= tolerance) {
+            result.push_back(lineData);
+        }
+    }
+
+    return result;
+}

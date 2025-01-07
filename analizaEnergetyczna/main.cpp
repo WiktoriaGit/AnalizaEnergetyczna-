@@ -96,6 +96,7 @@ int main()
     cout << "Pobor: " << poborSum << endl;
     cout << "Produkcja: " << produkcjaSum << endl;
 
+	// claculate averages between dates
     treeData.calculateAveragesBetweenDates(startDate, endDate, autokonsumpcjaSum, eksportSum, importSum, poborSum, produkcjaSum);
 
     cout << "Average between " << startDate << " and " << endDate << ":" << endl;
@@ -110,6 +111,8 @@ int main()
     string startDate2 = "02.10.2020 00:00";
     string endDate2 = "02.10.2020 09:00";
 
+
+	// compare data between dates
     float autokonsumpcjaDiff, eksportDiff, importDiff, poborDiff, produkcjaDiff;
     treeData.compareDataBetweenDates(startDate1, endDate1, startDate2, endDate2, autokonsumpcjaDiff, eksportDiff, importDiff, poborDiff, produkcjaDiff);
     cout << "Differences between " << startDate1 << " - " << endDate1 << " and " << startDate2 << " - " << endDate2 << ":" << endl;
@@ -118,6 +121,19 @@ int main()
     cout << "Import: " << importDiff << endl;
     cout << "Pobor: " << poborDiff << endl;
     cout << "Produkcja: " << produkcjaDiff << endl;
+
+
+    // Search records with tolerance
+    float searchValue = 449.2026;
+    float tolerance = 0.01f;
+
+    vector<LineData> recordsWithTolerance = treeData.searchRecordsWithTolerance(startDate, endDate, searchValue, tolerance);
+
+    cout << "Records with value " << searchValue << " ± " << tolerance << " between " << startDate << " and " << endDate << ":" << endl;
+    for (const auto& ld : recordsWithTolerance) {
+        ld.print();
+    }
+
 
 
     // Export data to binary file
