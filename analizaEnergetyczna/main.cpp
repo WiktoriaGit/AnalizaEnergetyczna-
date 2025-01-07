@@ -180,7 +180,8 @@ int main()
             vector<LineData> importedData;
             while (binaryFileIn.peek() != EOF) {
                 LineData ld(binaryFileIn);
-                importedData.push_back(ld);
+                //importedData.push_back(ld);
+                treeData.addData(ld);
             }
 
             binaryFileIn.close();
@@ -205,39 +206,3 @@ int main()
 
     return 0;
 }
-
-
-
-// Export data to binary file
-//ofstream binaryFile("data.bin", ios::binary);
-//if (!binaryFile.is_open()) {
-//    cerr << "Error opening binary file" << endl;
-//    return 1;
-//}
-
-//for (const auto& ld : data) {
-//    ld.serialize(binaryFile);
-//}
-
-
-//binaryFile.close();
-
-//// Import data from binary file
-//ifstream binaryFileIn("data.bin", ios::binary);
-//if (!binaryFileIn.is_open()) {
-//    cerr << "Error opening binary file for reading" << endl;
-//    return 1;
-//}
-
-//vector<LineData> importedData;
-//while (binaryFileIn.peek() != EOF) {
-//    LineData ld(binaryFileIn);
-//    importedData.push_back(ld);
-//}
-
-//binaryFileIn.close();
-
-//// Print imported data
-////for (const auto& ld : importedData) {
-////    ld.print();
-////}
